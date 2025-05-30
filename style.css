@@ -1,0 +1,127 @@
+ul {
+    list-style-type:none;
+    padding:0px;
+}
+
+.sidebar {
+    position:fixed;
+    height:100%;
+    width:50px;
+    background-color: #dcfcca;
+    padding:6px 14px;
+    top:0%;
+    left:0%;
+    overflow:hidden;
+    transition: all 0.5s ease;
+}
+
+.sidebar .logo .logoicon{
+    display:flex;
+    height:50px;
+    align-items: center;
+    opacity: 0;
+    width:0px;
+}
+
+
+.sidebar #menubtn {
+    position:absolute;
+    left: 50%;
+    top: 6px;
+    font-size: 20px;
+    height:50px;
+    width:50px;
+    display:block;
+    text-align: center;
+    line-height: 50px;
+    transform: translateX(-50%);
+    transition:0.5s ease;
+}
+
+.sidebar ul {
+    margin-top: 20px;
+    text-align:center;
+}
+
+.sidebar li {
+    position:relative;
+    height:50px;
+    width:50%;
+    margin: 0px;
+}
+
+.sidebar ul li a {
+    display:flex;
+    align-items: center;
+    text-decoration: none;
+    color:black;
+    min-width: 50px;
+    border-radius:100%;
+    transition: all 0.5s ease;
+}
+.sidebar.active ul li a {
+    display:flex;
+    align-items: center;
+    text-decoration: none;
+    color:black;
+    min-width: 50px;
+    border-radius:12px;
+}
+
+.sidebar ul li a i{
+    height:50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.sidebar ul li a:hover {
+    background:white;
+}
+.sidebar.active {
+    width: 150px;
+}
+
+.sidebar.active .logo .logoicon {
+    opacity:1;
+    pointer-events: none;
+}
+.sidebar.active #menubtn {
+    left:85%;
+}
+.sidebar.active ul li {
+    width:150px;
+}
+#menubtn:hover {
+    cursor: pointer;
+    background:white;
+    border-radius:100%;
+}
+
+.span .navbarname {
+    overflow:hidden;
+}
+
+.sidebar.active .navbarname {
+    opacity:1;
+    pointer-events: auto;
+}
+.sidebar .navbarname {
+    opacity:0;
+    pointer-events: none;
+}
+
+.logoname {
+    padding-left:15px;
+}
+
+.PageContents {
+    position: absolute;
+    width: calc(100%-150px);
+    left:150px;
+}
+
+.PageContents.active {
+    width: calc(100%)
+}
