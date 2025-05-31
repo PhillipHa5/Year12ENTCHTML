@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="style.css">
     <title>MFHS Library</title>
     <link rel="stylesheet" href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.css">
     
 </head>
 <body>
@@ -18,13 +19,13 @@
         </div>
         <ul class="navlist">
             <li>
-                <a href="Home.html" id="CurrentPage">
+                <a href="Home.html">
                     <i class='bx  bx-home'></i> 
                     <span class="navbarname">Home</span>
                 </a>
             </li>
             <li>
-                <a href="MainTable.html">
+                <a href="MainTable.html" id="CurrentPage">
                     <i class='bx  bx-table-columns'></i> 
                     <span class="navbarname">Main Table</span>
                 </a>
@@ -56,9 +57,28 @@
         </ul>
     </div>
     <div class="PageContents active">
-        <div class="PageHeader">Home</div>
-        <div class="PageBody"></div>
+        <div class="PageHeader">Main Table</div>
+        <div class="PageBody">
+            <table id="MainTable" class="display">
+        <thead>
+            <tr>
+                <th>count</th>
+                <th>user_id</th>
+                <th>book_id</th>
+                <th>borrow_date</th>
+                <th>return_date</th>
+                <th>reservation_status</th>
+                <th>overdue_status</th>
+                <th>user_role</th>
+                <th>book_category</th>
+            </tr>
+        </thead>
+    </table>
+        </div>
     </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>

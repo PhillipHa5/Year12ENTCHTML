@@ -1,26 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+TC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zain:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zain:wght@300&display=swap');
 ul {
     list-style-type:none;
     padding:0px;
 }
-
 .sidebar {
     position:fixed;
     height:100%;
-    width:50px;
+    width:2.7%;
     background-color: #dcfcca;
-    padding:6px 14px;
+    padding: 6px 0.3%;
     top:0%;
     left:0%;
     overflow:hidden;
     transition: all 0.5s ease;
+    font-family: "Zain", sans-serif;
+    font-weight: 300;
+    font-style:normal;
+    font-size: 22px;
 }
 
 .sidebar .logo .logoicon{
     display:flex;
     height:50px;
     align-items: center;
-    opacity: 0;
     width:0px;
+    opacity:0;
+    transition: all 0.3s ease;
+}
+
+.sidebar.active .logoname {
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+.sidebar .logoname {
+    opacity:0;
+    transition: all 0.5s ease;
+}
+.sidebar.active .logo .logoicon {
+    opacity: 1;
+    transition: all 0.5s ease;
 }
 
 
@@ -80,13 +101,9 @@ ul {
     background:white;
 }
 .sidebar.active {
-    width: 150px;
+    width: 8%;
 }
 
-.sidebar.active .logo .logoicon {
-    opacity:1;
-    pointer-events: none;
-}
 .sidebar.active #menubtn {
     left:85%;
 }
@@ -99,17 +116,17 @@ ul {
     border-radius:100%;
 }
 
-.span .navbarname {
-    overflow:hidden;
-}
-
 .sidebar.active .navbarname {
     opacity:1;
     pointer-events: auto;
+    transition: all 0.5s ease;
 }
 .sidebar .navbarname {
     opacity:0;
     pointer-events: none;
+    transition: all 0.5s ease;
+    overflow:hidden;
+    min-width:100px;
 }
 
 .logoname {
@@ -118,10 +135,54 @@ ul {
 
 .PageContents {
     position: absolute;
-    width: calc(100%-150px);
-    left:150px;
+    display:flex;
+    width: 96.7%;
+    left:3.3%;
+    transition: all 0.5s ease;
+    overflow-wrap:normal;
+    flex-wrap:wrap;
 }
 
 .PageContents.active {
-    width: calc(100%)
+    width: 91.4%;
+    left: 8.6%;
+    transition: all 0.5s ease;
+}
+
+.logo {
+    margin-left:17px;
+    transition: all 0.5s ease;
+}
+
+.PageHeader {
+    font-family: "Poiret One", sans-serif;
+    font-size:35px;
+    padding-left:25px;
+    border-bottom: solid;
+    width: 100%;
+    display:block;
+    padding-top:8px;
+    top:0px;
+    position: sticky;
+    background-color:white;
+    z-index:+1;
+}
+
+.sidebar.active .logo {
+    transition: all 0.5s ease;
+}
+
+.PageBody {
+    display:flex;
+    margin-left:1%;
+    margin-top:1%;
+    font-family: "Poppins";
+}
+
+#CurrentPage {
+    background-color:white;
+}
+
+body {
+    margin:0;
 }
