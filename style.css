@@ -186,3 +186,11 @@ ul {
 body {
     margin:0;
 }
+
+#message {
+    display: none;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
