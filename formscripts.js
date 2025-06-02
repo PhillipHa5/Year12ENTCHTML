@@ -2,9 +2,13 @@ const form = document.getElementById("AddRecordForm");
 const submitButton = document.getElementById("formsubmit");
 const messageDiv = document.getElementById("message");
 
+
 form.addEventListener("submit", async function (e) {
     e.preventDefault();
-
+    const bd = new Date(document.getElementById("borrow_date").value);
+    const rd = new Date(document.getElementById("return_date").value);
+    console.log(typeof(bd))
+    console.log(typeof(rd))
     messageDiv.textContent = "Submitting...";
     messageDiv.style.display = "block";
     messageDiv.style.backgroundColor = "beige";
@@ -30,7 +34,16 @@ form.addEventListener("submit", async function (e) {
             errorstatus = 1;
             form.reset()
             break
-        } else {
+        } 
+        else if (bd > rd) {
+          messageDiv.textContent = "Error: Return Date is before Borrow Date";
+          messageDiv.style.backgroundColor = "#f14668";
+          messageDiv.style.color = "white";
+          errorstatus = 1;
+          form.reset()
+          break
+        }
+        else {
             formDataObj[key] = value;
             }
         }
@@ -40,9 +53,8 @@ form.addEventListener("submit", async function (e) {
         if(!Object.keys(formDataObj).includes("overdue_status")) {
             formDataObj["overdue_status"] = "0";
         } 
-                     
+        if(errorstatus === 0) {             
         const scriptURL = "https://script.google.com/macros/s/AKfycbzOrRRg3zcvpmkVhGw7hrtjMIdV6pp9XeDhjuzwDaa5cVqhknudasa75BNM5MgSUYpM/exec";
-        console.log(formDataObj)
         const response = await fetch(scriptURL, {
             redirect: "follow",
             method: "POST",
@@ -51,7 +63,6 @@ form.addEventListener("submit", async function (e) {
               "Content-Type": "text/plain;charset=utf-8",
             },
           });
-          if(errorstatus === 0) {
           const data = await response.json();
           if (data.status === "success") {
             messageDiv.textContent =
