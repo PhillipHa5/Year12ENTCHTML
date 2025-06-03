@@ -7,7 +7,9 @@ new DataTable('#MainTable', {
         { data: 'return_date' },
         { data: 'reservation_status' },
         { data: 'overdue_status' },
-        { data: 'user_role'},
-        { data: 'book_category'},
+        { data: 'user_role' },
+        { data: 'book_category' },
     ]
 });
+var tabledata = document.getElementById('MainTable').value
+console.log(tabledata)

@@ -2,32 +2,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zain:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zain:wght@300&display=swap');
-ul {
-    list-style-type:none;
-    padding:0px;
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
 }
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
 .sidebar {
-    position:fixed;
-    height:100%;
-    width:2.7%;
+    position: fixed;
+    height: 100%;
+    width: 2.7%;
     background-color: #dcfcca;
     padding: 6px 0.3%;
-    top:0%;
-    left:0%;
-    overflow:hidden;
+    top: 0%;
+    left: 0%;
+    overflow: hidden;
     transition: all 0.5s ease;
     font-family: "Zain", sans-serif;
     font-weight: 300;
-    font-style:normal;
+    font-style: normal;
     font-size: 22px;
 }
 
-.sidebar .logo .logoicon{
-    display:flex;
-    height:50px;
+.sidebar .logo .logoicon {
+    display: flex;
+    height: 50px;
     align-items: center;
-    width:0px;
-    opacity:0;
+    width: 0px;
+    opacity: 0;
     transition: all 0.3s ease;
 }
 
@@ -35,62 +42,64 @@ ul {
     opacity: 1;
     transition: all 0.5s ease;
 }
+
 .sidebar .logoname {
-    opacity:0;
+    opacity: 0;
     transition: all 0.5s ease;
 }
+
 .sidebar.active .logo .logoicon {
     opacity: 1;
     transition: all 0.5s ease;
 }
 
-
 .sidebar #menubtn {
-    position:absolute;
+    position: absolute;
     left: 50%;
     top: 6px;
     font-size: 20px;
-    height:50px;
-    width:50px;
-    display:block;
+    height: 50px;
+    width: 50px;
+    display: block;
     text-align: center;
     line-height: 50px;
     transform: translateX(-50%);
-    transition:0.5s ease;
+    transition: 0.5s ease;
 }
 
 .sidebar ul {
     margin-top: 20px;
-    text-align:center;
+    text-align: center;
 }
 
 .sidebar li {
-    position:relative;
-    height:50px;
-    width:50%;
+    position: relative;
+    height: 50px;
+    width: 50%;
     margin: 0px;
 }
 
 .sidebar ul li a {
-    display:flex;
+    display: flex;
     align-items: center;
     text-decoration: none;
-    color:black;
+    color: black;
     min-width: 50px;
-    border-radius:100%;
+    border-radius: 100%;
     transition: all 0.5s ease;
 }
+
 .sidebar.active ul li a {
-    display:flex;
+    display: flex;
     align-items: center;
     text-decoration: none;
-    color:black;
+    color: black;
     min-width: 50px;
-    border-radius:12px;
+    border-radius: 12px;
 }
 
-.sidebar ul li a i{
-    height:50px;
+.sidebar ul li a i {
+    height: 50px;
     min-width: 50px;
     border-radius: 12px;
     line-height: 50px;
@@ -98,49 +107,53 @@ ul {
 }
 
 .sidebar ul li a:hover {
-    background:white;
+    background: white;
 }
+
 .sidebar.active {
     width: 8%;
 }
 
 .sidebar.active #menubtn {
-    left:85%;
+    left: 85%;
 }
+
 .sidebar.active ul li {
-    width:150px;
+    width: 150px;
 }
+
 #menubtn:hover {
     cursor: pointer;
-    background:white;
-    border-radius:100%;
+    background: white;
+    border-radius: 100%;
 }
 
 .sidebar.active .navbarname {
-    opacity:1;
+    opacity: 1;
     pointer-events: auto;
     transition: all 0.5s ease;
 }
+
 .sidebar .navbarname {
-    opacity:0;
+    opacity: 0;
     pointer-events: none;
     transition: all 0.5s ease;
-    overflow:hidden;
-    min-width:100px;
+    overflow: hidden;
+    min-width: 100px;
 }
 
 .logoname {
-    padding-left:15px;
+    padding-left: 15px;
 }
 
 .PageContents {
     position: absolute;
-    display:flex;
+    display: flex;
     width: 96.7%;
-    left:3.3%;
+    left: 3.3%;
     transition: all 0.5s ease;
-    overflow-wrap:normal;
-    flex-wrap:wrap;
+    overflow-wrap: normal;
+    flex-wrap: wrap;
 }
 
 .PageContents.active {
@@ -150,22 +163,22 @@ ul {
 }
 
 .logo {
-    margin-left:17px;
+    margin-left: 17px;
     transition: all 0.5s ease;
 }
 
 .PageHeader {
     font-family: "Poiret One", sans-serif;
-    font-size:35px;
-    padding-left:25px;
+    font-size: 35px;
+    padding-left: 25px;
     border-bottom: solid;
     width: 100%;
-    display:block;
-    padding-top:8px;
-    top:0px;
+    display: block;
+    padding-top: 8px;
+    top: 0px;
     position: sticky;
-    background-color:white;
-    z-index:+1;
+    background-color: white;
+    z-index: +1;
 }
 
 .sidebar.active .logo {
@@ -173,18 +186,18 @@ ul {
 }
 
 .PageBody {
-    display:flex;
-    margin-left:1%;
-    margin-top:1%;
+    display: flex;
+    margin-left: 1%;
+    margin-top: 1%;
     font-family: "Poppins";
 }
 
 #CurrentPage {
-    background-color:white;
+    background-color: white;
 }
 
 body {
-    margin:0;
+    margin: 0;
 }
 
 #message {
