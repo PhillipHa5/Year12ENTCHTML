@@ -11,5 +11,3 @@ new DataTable('#MainTable', {
         { data: 'book_category' },
     ]
 });
-var tabledata = document.getElementById('MainTable').value
-console.log(tabledata)
