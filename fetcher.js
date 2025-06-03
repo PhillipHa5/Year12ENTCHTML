@@ -30,8 +30,15 @@ function diffbtdates(a,b) {
     console.log(differencebtdates)
 }
 ///Count of variable
+function countofarray(chosenarray,chosenfilter) {
+    var count = chosenarray.filter((el) => el.includes(chosenfilter)).length;
+    console.log("Count is:" + count)
+}
+///Average of variable
+function average(a) {
+    sumofarray(a)/a.length
+}
 getData().then(rdata => {
-    console.log(rdata)
     array = rdata.data;
     for (var j = 0; j<array.length; j++) {
         let rowdata = rdata.data[j];
@@ -64,9 +71,12 @@ getData().then(rdata => {
     for (var r = 7; r < newArray.length; r+=8) {
         bookcategory.push(newArray[r])
     }
-    console.log(newArray)
-    console.log(studentid)
     diffbtdates(borrowdate,returndate)
+    countofarray(userrole,"student")
+    countofarray(userrole,"faculty")
+    countofarray(userrole,"staff")
+    console.log(userrole)
+    console.log(average(overduestatus))
 });
 
 function drawChart() {
