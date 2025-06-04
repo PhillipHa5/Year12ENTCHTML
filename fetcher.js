@@ -1,107 +1,189 @@
-google.charts.load('current', {'packages':['corechart']});
-
+google.charts.load('current', { 'packages': ['corechart'] });
+google.load('visualization', '1', { packages: ['controls'] });
 const url = 'https://script.google.com/macros/s/AKfycbxCRRzzMgHAP6tQdJSa96kL_FgKokQTHeVKmtCxptP8sj--WYreRvims85AQdt5Tgk0/exec'
 let newArray = [];
-let studentid =[];
-let bookid =[];
-let borrowdate =[];
-let returndate=[];
-let reservationstatus=[];
-let overduestatus =[];
+let studentid = [];
+let bookid = [];
+let borrowdate = [];
+let returndate = [];
+let reservationstatus = [];
+let overduestatus = [];
 let userrole = [];
 let bookcategory = [];
 let differencebtdates = [];
+let agdbdo = [];
+let arrayoverduefalse = [];
+let arrayoverduetrue = [];
 async function getData() {
     const res = await fetch(url);
     const data = await res.json();
     return data;
 }
-function sumofarray(a) {        
+
+function sumofarray(a) {
     sum = a.reduce((partialSum, b) => partialSum + b, 0);
-    console.log(sum)
 }
 ///Differnece between dates
-function diffbtdates(a,b) {
+function diffbtdates(a, b) {
     for (var i = 0; i < a.length; i++) {
         date1 = new Date(a[i])
         date2 = new Date(b[i])
-        differencebtdates.push(Math.round((Math.abs(date2-date1))/86400000));
+        differencebtdates.push(Math.round((Math.abs(date2 - date1)) / 86400000));
     }
-    console.log(differencebtdates)
 }
 ///Count of variable
-function countofarray(chosenarray,chosenfilter) {
+function countofarray(chosenarray, chosenfilter) {
     var count = chosenarray.filter((el) => el.includes(chosenfilter)).length;
     console.log("Count is:" + count)
+    return count
 }
 ///Average of variable
-function average(a) {
-    sumofarray(a)/a.length
+function averageofarray(a) {
+    sum = a.reduce((partialSum, b) => partialSum + b, 0)
+    average = sum / a.length;
+    return a
 }
+
+function avgdiffbtdatesonoverdue() {
+    /// get values of variable and put it into its own array
+    for (var i = 0; i < overduestatus.length; i++) {
+        agdbdo.push(overduestatus[i]);
+        agdbdo.push(differencebtdates[i]);
+    }
+    //split into 2 arrays, one with overdue status 1, one with 0
+    for (var j = 0; j < agdbdo.length; j += 2) {
+        if (agdbdo[j] == "1") {
+            arrayoverduetrue.push(agdbdo[j + 1]);
+            arrayoverduetrue.map(Number);
+        } else {
+            arrayoverduefalse.push(agdbdo[j + 1]);
+            arrayoverduefalse.map(Number);
+        }
+    }
+}
+/// count of each day and its overdue status
+function countoverdue(a) {
+    for (var i = 1; i < Math.max.apply(Math, a); i++) {
+        filteredarray = a.filter((Number) => Number === i);
+        countoffilteredarray = filteredarray.length
+    }
+}
+
+
 getData().then(rdata => {
     array = rdata.data;
-    for (var j = 0; j<array.length; j++) {
+    for (var j = 0; j < array.length; j++) {
         let rowdata = rdata.data[j];
         var result = Object.entries(rowdata);
-        for (var i = 0; i < result.length; i ++) {
+        for (var i = 0; i < result.length; i++) {
             newArray.push(result[i][1]);
-    }}
-    console.log(newArray.length)
-    for (var k = 0; k < newArray.length; k+=8) {
+        }
+    }
+    for (var k = 0; k < newArray.length; k += 8) {
         studentid.push(newArray[k])
     }
-    for (var l = 1; l < newArray.length; l+=8) {
+    for (var l = 1; l < newArray.length; l += 8) {
         bookid.push(newArray[l])
     }
-    for (var m = 2; m < newArray.length; m+=8) {
+    for (var m = 2; m < newArray.length; m += 8) {
         borrowdate.push(newArray[m])
     }
-    for (var n = 3; n < newArray.length; n+=8) {
+    for (var n = 3; n < newArray.length; n += 8) {
         returndate.push(newArray[n])
     }
-    for (var o = 4; o < newArray.length; o+=8) {
+    for (var o = 4; o < newArray.length; o += 8) {
         reservationstatus.push(newArray[o])
     }
-    for (var p = 5; p < newArray.length; p+=8) {
+    for (var p = 5; p < newArray.length; p += 8) {
         overduestatus.push(newArray[p])
     }
-    for (var q = 6; q < newArray.length; q+=8) {
+    for (var q = 6; q < newArray.length; q += 8) {
         userrole.push(newArray[q])
     }
-    for (var r = 7; r < newArray.length; r+=8) {
+    for (var r = 7; r < newArray.length; r += 8) {
         bookcategory.push(newArray[r])
     }
-    diffbtdates(borrowdate,returndate)
-    countofarray(userrole,"student")
-    countofarray(userrole,"faculty")
-    countofarray(userrole,"staff")
-    console.log(userrole)
-    console.log(average(overduestatus))
+    diffbtdates(borrowdate, returndate)
+    countofarray(userrole, "student")
+    countofarray(userrole, "faculty")
+    countofarray(userrole, "staff")
+    avgdiffbtdatesonoverdue()
+    averageofarray(arrayoverduefalse)
+    averageofarray(arrayoverduetrue)
+    console.log(arrayoverduetrue)
+    countoverdue(arrayoverduetrue)
+    drawoverduebooksChart()
+    userrolepiechart()
 });
 
-function drawChart() {
+function drawoverduebooksChart() {
+    setTimeout(() => {
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Days Borrowed');
+            data.addColumn('number', 'Number of Overdue Books');
+            for (var i = 1; i < Math.max.apply(Math, arrayoverduetrue); i++) {
+                filteredarray = arrayoverduetrue.filter((Number) => Number === i);
+                countoffilteredarray = filteredarray.length
+                console.log(countoffilteredarray + "books overdue for day" + i)
+                data.addRows([
+                    [i, countoffilteredarray],
+                ])
+            }
+            var dashboard = new google.visualization.Dashboard(
+                document.getElementById('dashboard_div'));
 
-        // Create the data table.
+            var donutRangeSlider = new google.visualization.ControlWrapper({
+                'controlType': 'NumberRangeFilter',
+                'containerId': 'filter_div',
+                'options': {
+                    'filterColumnLabel': 'Days Borrowed',
+                }
+            });
+            var columnChart = new google.visualization.ChartWrapper({
+                'chartType': 'ColumnChart',
+                'containerId': 'chart_div',
+                'options': {
+                    'width': 600,
+                    'height': 600,
+                    'pieSliceText': 'value',
+                    'legend': 'right',
+                    'title': 'Number of Overdue Books for how long they are borrowed for',
+                    vAxes: {
+                        0: {
+                            title: 'Number of Overdue Books',
+                            baseline: 0
+                        },
+                    },
+                    hAxis: {
+                        title: 'Days Borrowed'
+                    },
+                }
+            });
+            dashboard.bind(donutRangeSlider, columnChart);
+            dashboard.draw(data);
+        },
+        1000);
+};
+
+function userrolepiechart() {
+    setTimeout(() => {
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
+        data.addColumn('string', 'User Role');
+        data.addColumn('number', 'Number Of People');
+        console.log(countofarray(userrole, "student"))
         data.addRows([
-          ['Mushrooms', 3],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
+            ['Student', countofarray(userrole, "student")],
+            ['Faculty', countofarray(userrole, "faculty")],
+            ['staff', countofarray(userrole, "staff")],
         ]);
+        var options = {
+            'title': 'Different types of people borrowing',
+            'width': 400,
+            'height': 300
+        };
 
-        // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night',
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.PieChart(document.getElementById('userrolepiechart'));
         chart.draw(data, options);
-      }
-
-
-
+    }, 1000)
+};

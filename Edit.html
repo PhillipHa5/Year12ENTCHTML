@@ -7,6 +7,7 @@
     <title>MFHS Library</title>
     <link rel="stylesheet" href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.css">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link rel="icon" href="images/mfgs.png">
 
@@ -63,7 +64,10 @@
     <div class="PageContents active">
         <div class="PageHeader">Edit Table</div>
         <div class="PageBody">
-            <div id="chart_div"></div>
+            <div id="dashboard_div">
+                <div id="filter_div"></div>
+                <div id="chart_div"></div>
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -71,7 +75,5 @@
     <script type="text/javascript" src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
     <script src="scripts.js"></script>
     <script src="fetcher.js"></script>
-    <script src="graphingtest.js"></script>
-</body>
 
 </html>

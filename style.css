@@ -190,6 +190,10 @@ ul {
     margin-left: 1%;
     margin-top: 1%;
     font-family: "Poppins";
+    flex-flow: row wrap;
+    justify-content: left;
+    width: 100%;
+    overflow: wrap;
 }
 
 #CurrentPage {
@@ -206,4 +210,29 @@ body {
     padding: 10px;
     border-radius: 4px;
     font-weight: bold;
+}
+
+.GraphsContainer {
+    display: inline-block;
+    width: 100%;
+    overflow: wrap;
+    word-wrap: break-all;
+    font-weight: bold;
+    font-size: 25px;
+    display: flex;
+    width: 100%
+}
+
+#dashboard_div {
+    font-weight: normal;
+}
+
+.google-visualization-controls-rangefilter {
+    display: flex;
+    overflow: wrap;
+}
+
+.google-visualization-controls-label {
+    float: left;
+    clear: left;
 }
