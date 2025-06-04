@@ -175,15 +175,38 @@ function userrolepiechart() {
         data.addRows([
             ['Student', countofarray(userrole, "student")],
             ['Faculty', countofarray(userrole, "faculty")],
-            ['staff', countofarray(userrole, "staff")],
+            ['Staff', countofarray(userrole, "staff")],
         ]);
-        var options = {
-            'title': 'Different types of people borrowing',
-            'width': 400,
-            'height': 300
-        };
+        // Create a dashboard.
+  var dashboard = new google.visualization.Dashboard(
+    document.getElementById('userrolepiechartdashboard'));
 
-        var chart = new google.visualization.PieChart(document.getElementById('userrolepiechart'));
-        chart.draw(data, options);
+  // Create a range slider, passing some options
+  var nameSelect = new google.visualization.ControlWrapper({
+    'controlType': 'CategoryFilter',
+    'containerId': 'filter_div1',
+    'options': {
+      'filterColumnLabel': 'User Role'
+    }
+  });
+
+  // Create a pie chart, passing some options
+  var pieChart = new google.visualization.ChartWrapper({
+    'chartType': 'PieChart',
+    'containerId': 'chart_div1',
+    'options': {
+      'width': 600,
+      'height': 600,
+      'pieSliceText': 'value',
+      'legend': 'right',
+      'title' : 'Different Users Borrowing',
+      'is3D': true,
+    }
+  });
+  dashboard.bind(nameSelect, pieChart);
+
+  // Draw the dashboard.
+  dashboard.draw(data);
+        
     }, 1000)
 };

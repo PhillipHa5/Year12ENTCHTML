@@ -215,8 +215,6 @@ body {
 .GraphsContainer {
     display: inline-block;
     width: 100%;
-    overflow: wrap;
-    word-wrap: break-all;
     font-weight: bold;
     font-size: 25px;
     display: flex;
@@ -225,6 +223,7 @@ body {
 
 #dashboard_div {
     font-weight: normal;
+    width:50%;
 }
 
 .google-visualization-controls-rangefilter {
@@ -235,4 +234,21 @@ body {
 .google-visualization-controls-label {
     float: left;
     clear: left;
+    font-weight:normal;
+}
+.goog-combobox input {
+    padding: 8px 12px;
+    color: #3333;
+    background-color:#eeee;
+    border:1px solid #dddd;
+    cursor:pointer;
+    border-radius:5px;
+    
+}
+.label-input-label:hover {
+    cursor:pointer;
+}
+
+#userrolepiechart {
+    width:50%;
 }
