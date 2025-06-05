@@ -177,36 +177,55 @@ function userrolepiechart() {
             ['Faculty', countofarray(userrole, "faculty")],
             ['Staff', countofarray(userrole, "staff")],
         ]);
-        // Create a dashboard.
-  var dashboard = new google.visualization.Dashboard(
-    document.getElementById('userrolepiechartdashboard'));
+        var dashboard = new google.visualization.Dashboard(
+            document.getElementById('userrolepiechartdashboard'));
+        var nameSelect = new google.visualization.ControlWrapper({
+            'controlType': 'CategoryFilter',
+            'containerId': 'filter_div1',
+            'options': {
+                'filterColumnLabel': 'User Role'
+            }
+        });
+        var pieChart = new google.visualization.ChartWrapper({
+            'chartType': 'PieChart',
+            'containerId': 'chart_div1',
+            'options': {
+                'width': 600,
+                'height': 600,
+                'pieSliceText': 'value',
+                'legend': 'right',
+                'title': 'Different Users Borrowing',
+                'is3D': true,
+            }
+        });
+        dashboard.bind(nameSelect, pieChart);
+        dashboard.draw(data);
+    }, 1000)
+};
 
-  // Create a range slider, passing some options
-  var nameSelect = new google.visualization.ControlWrapper({
-    'controlType': 'CategoryFilter',
-    'containerId': 'filter_div1',
-    'options': {
-      'filterColumnLabel': 'User Role'
-    }
-  });
+function drawChart() {
+    setTimeout(() => {
+        var data = google.visualization.arrayToDataTable([
+            ['User Role', 'Art', 'Fiction', 'Non-Fiction', 'History',
+                'Science', { role: 'annotation' }
+            ],
+            ['Art', 10, 24, 20, 32, 18, ''],
+            ['Fiction', 16, 22, 23, 30, 16, ''],
+            ['Non-Fiction', 28, 19, 29, 30, 12, ''],
+            ['History', 28, 19, 29, 30, 12, ''],
+            ['Science', 28, 19, 29, 30, 12, '']
+        ]);
+        var view = new google.visualization.DataView(data);
 
-  // Create a pie chart, passing some options
-  var pieChart = new google.visualization.ChartWrapper({
-    'chartType': 'PieChart',
-    'containerId': 'chart_div1',
-    'options': {
-      'width': 600,
-      'height': 600,
-      'pieSliceText': 'value',
-      'legend': 'right',
-      'title' : 'Different Users Borrowing',
-      'is3D': true,
-    }
-  });
-  dashboard.bind(nameSelect, pieChart);
-
-  // Draw the dashboard.
-  dashboard.draw(data);
-        
+        var options = {
+            title: "Density of Precious Metals, in g/cm^3",
+            width: 600,
+            height: 400,
+            legend: { position: 'top', maxLines: 3 },
+            bar: { groupWidth: '75%' },
+            isStacked: true,
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
     }, 1000)
 };

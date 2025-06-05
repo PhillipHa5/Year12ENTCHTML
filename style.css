@@ -187,8 +187,8 @@ ul {
 
 .PageBody {
     display: flex;
-    margin-left: 1%;
-    margin-top: 1%;
+    padding-left: 1%;
+    padding-top: 1%;
     font-family: "Poppins";
     flex-flow: row wrap;
     justify-content: left;
@@ -223,7 +223,10 @@ body {
 
 #dashboard_div {
     font-weight: normal;
-    width:50%;
+    width: 49%;
+    padding-left: 1%;
+    border: 1px solid black;
+    padding-bottom: 1%;
 }
 
 .google-visualization-controls-rangefilter {
@@ -234,21 +237,67 @@ body {
 .google-visualization-controls-label {
     float: left;
     clear: left;
-    font-weight:normal;
-}
-.goog-combobox input {
-    padding: 8px 12px;
-    color: #3333;
-    background-color:#eeee;
-    border:1px solid #dddd;
-    cursor:pointer;
-    border-radius:5px;
-    
-}
-.label-input-label:hover {
-    cursor:pointer;
+    font-weight: normal;
 }
 
-#userrolepiechart {
-    width:50%;
+.goog-combobox input {
+    padding: 10px 14px;
+    color: #3333;
+    background-color: #eeee;
+    border: 1px solid #dddd;
+    cursor: pointer;
+    border-radius: 9px;
+}
+
+.goog-combobox input:hover {
+    border-color: white;
+}
+
+span.goog-combobox.goog-inline-block {
+    border-radius: 12px;
+    position: absolute;
+}
+
+.label-input-label:hover {
+    cursor: pointer;
+}
+
+#userrolepiechartdashboard {
+    width: 49%;
+    padding-left: 1%;
+    padding-bottom: 1%;
+    border: 1px solid black;
+    height: 645.5px;
+    max-height: 645.5px;
+}
+
+.goog-combobox-button {
+    opacity: 0;
+    background-color: white;
+    width: 0;
+}
+
+.goog-control.goog-inline-block {
+    font-weight: normal;
+    padding-right: 15px;
+}
+
+#filter_div1 {
+    display: flex;
+    align-items: center first baseline;
+}
+
+.google-visualization-controls-categoryfilter-selected.goog-inline-block {
+    left: 235px;
+    bottom: 13px;
+    position: relative;
+}
+
+.PageBodyCharts {
+    display: flex;
+    font-family: "Poppins";
+    flex-flow: row wrap;
+    justify-content: left;
+    width: 100%;
+    overflow: wrap;
 }
