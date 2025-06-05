@@ -14,7 +14,6 @@ form.addEventListener("submit", async function (e) {
     messageDiv.style.backgroundColor = "beige";
     messageDiv.style.color = "black";
     submitButton.disabled = true;
-    submitButton.classList.add("is-loading");
     let errorstatus = 0;
 
     try {

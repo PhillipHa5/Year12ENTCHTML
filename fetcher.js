@@ -1,6 +1,8 @@
 google.charts.load('current', { 'packages': ['corechart'] });
+google.charts.load("current", {packages:["calendar"]});
 google.load('visualization', '1', { packages: ['controls'] });
 const url = 'https://script.google.com/macros/s/AKfycbxCRRzzMgHAP6tQdJSa96kL_FgKokQTHeVKmtCxptP8sj--WYreRvims85AQdt5Tgk0/exec'
+let loader = document.getElementById("loaderwrapper")
 let newArray = [];
 let studentid = [];
 let bookid = [];
@@ -14,12 +16,52 @@ let differencebtdates = [];
 let agdbdo = [];
 let arrayoverduefalse = [];
 let arrayoverduetrue = [];
+let userrolegenre =[];
+let dateCounts = {};
+let dateCountArray = [];
+let dateCuntArrayFiltered = [];
 async function getData() {
     const res = await fetch(url);
     const data = await res.json();
     return data;
 }
 
+function countdate() {
+    for (let i = 0; i < borrowdate.length; i++) {
+    let date = borrowdate[i];
+    if (dateCounts[date]) {
+        dateCounts[date]++;
+    } else {
+        dateCounts[date] = 1;
+    }
+    
+}
+    for (let date in dateCounts) {
+    dateCountArray.push([date, dateCounts[date]]);
+}
+    for (let j = 0; j <dateCountArray.length; j+=2) {
+        dateCuntArrayFiltered.push(dateCountArray[j][0]);
+        dateCuntArrayFiltered.push(dateCountArray[j+1][1]);
+    }
+}
+
+function joinarray(a,b, arrayresult) {
+    for (var i=0; i <a.length; i++) {
+        arrayresult.push(a[i]);
+        arrayresult.push(b[i]);
+    }
+}
+function calculatedistinctcount(genre,userrole,array) {
+    let countofdistinctcount =0;
+    for (var i =0; i < array.length; i+=2) {
+        if(array[i] == userrole) {
+            if(array[i+1] == genre) {
+                countofdistinctcount = countofdistinctcount + 1;
+            }
+        }
+    }
+    return countofdistinctcount
+}
 function sumofarray(a) {
     sum = a.reduce((partialSum, b) => partialSum + b, 0);
 }
@@ -34,7 +76,6 @@ function diffbtdates(a, b) {
 ///Count of variable
 function countofarray(chosenarray, chosenfilter) {
     var count = chosenarray.filter((el) => el.includes(chosenfilter)).length;
-    console.log("Count is:" + count)
     return count
 }
 ///Average of variable
@@ -87,9 +128,11 @@ getData().then(rdata => {
     }
     for (var m = 2; m < newArray.length; m += 8) {
         borrowdate.push(newArray[m])
+        borrowdate = borrowdate.map(dateStr => dateStr.split("T")[0]);
     }
     for (var n = 3; n < newArray.length; n += 8) {
         returndate.push(newArray[n])
+        returndate = returndate.map(dateStr => dateStr.split("T")[0]);
     }
     for (var o = 4; o < newArray.length; o += 8) {
         reservationstatus.push(newArray[o])
@@ -110,10 +153,18 @@ getData().then(rdata => {
     avgdiffbtdatesonoverdue()
     averageofarray(arrayoverduefalse)
     averageofarray(arrayoverduetrue)
-    console.log(arrayoverduetrue)
     countoverdue(arrayoverduetrue)
     drawoverduebooksChart()
     userrolepiechart()
+    joinarray(userrole, bookcategory, userrolegenre)
+    console.log(calculatedistinctcount("art","student",userrolegenre))
+    drawborrowuserrolecolumn()
+    countdate()
+    drawcalenderchart()
+    console.log(dateCuntArrayFiltered[0])
+    console.log(dateCuntArrayFiltered[1])
+    setTimeout(() => {loader.classList.toggle("active")},1000)
+    console.log(document.getElementById('calenderchart'))
 });
 
 function drawoverduebooksChart() {
@@ -125,7 +176,6 @@ function drawoverduebooksChart() {
             for (var i = 1; i < Math.max.apply(Math, arrayoverduetrue); i++) {
                 filteredarray = arrayoverduetrue.filter((Number) => Number === i);
                 countoffilteredarray = filteredarray.length
-                console.log(countoffilteredarray + "books overdue for day" + i)
                 data.addRows([
                     [i, countoffilteredarray],
                 ])
@@ -144,7 +194,7 @@ function drawoverduebooksChart() {
                 'chartType': 'ColumnChart',
                 'containerId': 'chart_div',
                 'options': {
-                    'width': 600,
+                    'width': 700,
                     'height': 600,
                     'pieSliceText': 'value',
                     'legend': 'right',
@@ -193,7 +243,7 @@ function userrolepiechart() {
                 'width': 600,
                 'height': 600,
                 'pieSliceText': 'value',
-                'legend': 'right',
+                'legend': { position: 'top', maxLines: 3 },
                 'title': 'Different Users Borrowing',
                 'is3D': true,
             }
@@ -203,29 +253,75 @@ function userrolepiechart() {
     }, 1000)
 };
 //wadsudhjfg
-function drawChart() {
+function drawborrowuserrolecolumn() {
     setTimeout(() => {
         var data = google.visualization.arrayToDataTable([
-            ['User Role', 'Art', 'Fiction', 'Non-Fiction', 'History',
-                'Science', { role: 'annotation' }
-            ],
-            ['Art', 10, 24, 20, 32, 18, ''],
-            ['Fiction', 16, 22, 23, 30, 16, ''],
-            ['Non-Fiction', 28, 19, 29, 30, 12, ''],
-            ['History', 28, 19, 29, 30, 12, ''],
-            ['Science', 28, 19, 29, 30, 12, '']
+            ['User Role', 'Student', 'Faculty', 'Staff', { role: 'annotation' }],
+            ['Art', calculatedistinctcount("art","student",userrolegenre), calculatedistinctcount("art","faculty",userrolegenre), calculatedistinctcount("art","staff",userrolegenre), ''],
+            ['Fiction', calculatedistinctcount("fiction","student",userrolegenre), calculatedistinctcount("fiction","faculty",userrolegenre), calculatedistinctcount("fiction","staff",userrolegenre), ''],
+            ['Non-Fiction', calculatedistinctcount("non-fiction","student",userrolegenre), calculatedistinctcount("non-fiction","faculty",userrolegenre), calculatedistinctcount("non-fiction","staff",userrolegenre), ''],
+            ['History', calculatedistinctcount("history","student",userrolegenre), calculatedistinctcount("history","faculty",userrolegenre), calculatedistinctcount("history","staff",userrolegenre), ''],
+            ['Science', calculatedistinctcount("science","student",userrolegenre), calculatedistinctcount("science","faculty",userrolegenre), calculatedistinctcount("science","staff",userrolegenre), '']
         ]);
         var view = new google.visualization.DataView(data);
 
-        var options = {
-            title: "Density of Precious Metals, in g/cm^3",
-            width: 600,
-            height: 400,
-            legend: { position: 'top', maxLines: 3 },
-            bar: { groupWidth: '75%' },
-            isStacked: true,
-        };
-        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-        chart.draw(view, options);
+        var dashboard = new google.visualization.Dashboard(
+            document.getElementById('userrolepiechartdashboard'));
+        var nameSelect = new google.visualization.ControlWrapper({
+            'controlType': 'CategoryFilter',
+            'containerId': 'filter_div2',
+            'options': {
+                'filterColumnLabel': 'User Role'
+            }
+        });
+        var pieChart = new google.visualization.ChartWrapper({
+            'chartType': 'ColumnChart',
+            'containerId': 'chart_div2',
+            'options': {
+                'title': "Amount of books borrowed for each Genre and who borrows it",
+                'width': 600,
+                'height': 600,
+                'legend': { position: 'top', maxLines: 3 },
+                'bar': { groupWidth: '75%' },
+                'isStacked': 'true',
+            }
+        });
+        dashboard.bind(nameSelect, pieChart);
+        dashboard.draw(data);
+        var chart = new google.visualization.ColumnChart(document.getElementById("borrowuserrolecolumn"));
     }, 1000)
 };
+function drawcalenderchart() {
+    setTimeout(() => {
+       var dataTable = new google.visualization.DataTable();
+       dataTable.addColumn('date', 'Date');
+       dataTable.addColumn('number', 'Count');
+       for (var i =0; i< dateCuntArrayFiltered.length; i+=2) {
+       dataTable.addRows([
+          [ new Date(dateCuntArrayFiltered[i]), dateCuntArrayFiltered[i+1]]],
+        )};
+
+       var dashboard = new google.visualization.Dashboard(
+                document.getElementById('dashboard_div1'));
+
+            var donutRangeSlider = new google.visualization.ControlWrapper({
+                'controlType': 'DateRangeFilter',
+                'containerId': 'filter_div3',
+                'options': {
+                    'filterColumnLabel': 'Date',
+                }
+            });
+            var columnChart = new google.visualization.ChartWrapper({
+                'chartType': 'Calendar',
+                'containerId': 'chart_div3',
+                'options': {
+                    'width': 950,
+                    'height': 600,
+                    'pieSliceText': 'value',
+                    'legend': 'right',
+                    'title': 'Date',
+                }
+            });
+            dashboard.bind(donutRangeSlider, columnChart);
+            dashboard.draw(dataTable);
+   },1000)};

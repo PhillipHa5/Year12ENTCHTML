@@ -36,12 +36,7 @@
                     <span class="navbarname">View Graphs</span>
                 </a>
             </li>
-            <li>
-                <a href="Edit.html">
-                    <i class='bx  bx-pencil'></i> 
-                    <span class="navbarname">Edit Table</span>
-                </a>
-            </li>
+            
             <li>
                 <a href="Create.html" id="CurrentPage">
                     <i class='bx  bx-plus-circle'  ></i> 
@@ -58,27 +53,25 @@
     </div>
     <div class="PageContents active">
         <div class="PageHeader">Add Record</div>
-        <div class="PageBody">
-            <div>
+        <div class="PageBody" id="AddRecordPage">
+            <div class="RecordFromWrapper">
+                <div id="FormTitle">Add Record:</div>
                 <form id="AddRecordForm">
-                    <label class="formlabel">user_id</label>
-                    <input name ="user_id" class="forminput" id="user_id" type="text" minlength="36" maxlength="36"><br>
-                    <label class="formlabel">book_id</label>
-                    <input name ="book_id" class="forminput" id="book_id" type="text" minlength="36" maxlength="36"><br>
-                    <label class="formlabel">borrow_date</label>
+                    <label class="formlabel">User Id</label>
+                    <input name ="user_id" class="forminput" id="user_id" type="text" minlength="36" maxlength="36" placeholder="Input User Id"><br>
+                    <label class="formlabel">Book Id</label>
+                    <input name ="book_id" class="forminput" id="book_id" type="text" minlength="36" maxlength="36" placeholder="Input Book Id"><br>
+                    <label class="formlabel">Borrow Date</label>
                     <input name ="borrow_date" class="forminput" id="borrow_date" type="date"><br>
-                    <label class="formlabel">return_date</label>
+                    <label class="formlabel">Return Date</label>
                     <input name ="return_date" class="forminput" id="return_date" type="date"><br>
-                    <label class="formlabel">Reserved?</label>
-                    <input name ="reservation_status" class="forminput" id="reservation_status" type="checkbox"><br>
-                    <label class="formlabel">Overdue?</label>
-                    <input name ="overdue_status" class="forminput" id="overdue_status" type="checkbox"><br>
-                    <label class="formlabel">user_role</label>
+                    <label class="formlabel">User Role</label>
                     <select name="user_role" id="user_role">
-                        <option value="student">student</option>
-                        <option value="faculty">faculty</option>
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                        <option value="staff">Staff</option>
                     </select><br>
-                    <label class="formlabel">book_category</label>
+                    <label class="formlabel">Book Category</label>
                     <select name="book_category" id="book_category">
                         <option value="art">Art</option>
                         <option value="fiction">Fiction</option>
@@ -86,13 +79,16 @@
                         <option value="history">History</option>
                         <option value="science">Science</option>
                     </select><br>
+                    <label class="formlabel">Reserved?</label>
+                    <input name ="reservation_status" class="forminput" id="reservation_status" type="checkbox"><br>
+                    <label class="formlabel">Overdue?</label>
+                    <input name ="overdue_status" class="forminput" id="overdue_status" type="checkbox"><br>
                     <input id="formsubmit" type="submit">
-                </form>
+                </form><br>
+                <div id="message"></div>
             </div>
     </div>
-    <div id="message">
-
-    </div>
+    
 </div>
     <script src="scripts.js"></script>
     <script src="formscripts.js"></script> 

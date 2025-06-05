@@ -9,6 +9,7 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link rel="icon" href="images/mfgs.png">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -40,12 +41,7 @@
                     <span class="navbarname">View Graphs</span>
                 </a>
             </li>
-            <li>
-                <a href="Edit.html">
-                    <i class='bx  bx-pencil'></i>
-                    <span class="navbarname">Edit Table</span>
-                </a>
-            </li>
+            
             <li>
                 <a href="Create.html">
                     <i class='bx  bx-plus-circle'></i>
@@ -63,6 +59,9 @@
     <div class="PageContents active">
         <div class="PageHeader">Graphs</div>
         <div class="PageBodyCharts">
+            <div id="loaderwrapper" class="active">
+            <span class="loader"><span class="loader-inner"></span></span>
+            </div>
             <div class="GraphsContainer">
                 <div id="dashboard_div">
                     <div id="chart_div"></div>
@@ -72,6 +71,16 @@
                     <div id="chart_div1"></div>
                     <div id="filter_div1"></div>
                 </div>
+                <div id="borrowuserrolecolumn">
+                    <div id="chart_div2"></div>
+                    <div id="filter_div2"></div>
+                </div>
+                <div id="calenderchart">
+                    <div id="dashboard_div1">
+                        <div id="chart_div3"></div>
+                        <div id="filter_div3"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -80,6 +89,5 @@
     <script type="text/javascript" src="https://cdn.datatables.net/2.3.1/js/dataTables.js"></script>
     <script src="scripts.js"></script>
     <script src="fetcher.js"></script>
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="gcharts.css">
 </html>

@@ -204,100 +204,128 @@ body {
     margin: 0;
 }
 
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  25% {
+    transform: rotate(180deg);
+  }
+  
+  50% {
+    transform: rotate(180deg);
+  }
+  
+  75% {
+    transform: rotate(360deg);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+  
+  25% {
+    height: 0%;
+  }
+  
+  50% {
+    height: 100%;
+  }
+  
+  75% {
+    height: 100%;
+  }
+  
+  100% {
+    height: 0%;
+  }
+}
+
+.RecordFromWrapper {
+    width:50vw;
+    height:55vh;
+    background-color:#dcfcca;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:60px;
+}
+
+#AddRecordPage {
+    justify-content:center;
+}
+#AddRecordForm {
+    position:absolute;
+    width:300px;
+    scale:110%
+}
 #message {
     display: none;
     margin: 20px;
     padding: 10px;
     border-radius: 4px;
     font-weight: bold;
+    top:195px;
+    position:relative;
 }
 
-.GraphsContainer {
-    display: inline-block;
-    width: 100%;
-    font-weight: bold;
-    font-size: 25px;
-    display: flex;
-    width: 100%
+#FormTitle {
+    position:absolute;
+    top:145px;
+    scale:130%;
+}
+input {
+    border-radius:6px;
+    float:right;
+    border: solid 1px black;
+}
+select {
+    border-radius:6px;
+    float:right;}
+
+#AddRecordForm label {
+    float:left;
 }
 
-#dashboard_div {
-    font-weight: normal;
-    width: 49%;
-    padding-left: 1%;
-    border: 1px solid black;
-    padding-bottom: 1%;
+#formsubmit {
+    background-color:lightskyblue;
+    padding:2px 15px;
+    color:white;
+    right:100px;
+    top:25px;
+    border-radius:15px;
+    scale:110%;
+    font-size:20px;
+    font-family: "Zain", sans-serif;
+    position:relative;
 }
 
-.google-visualization-controls-rangefilter {
-    display: flex;
-    overflow: wrap;
-}
-
-.google-visualization-controls-label {
-    float: left;
-    clear: left;
-    font-weight: normal;
-}
-
-.goog-combobox input {
-    padding: 10px 14px;
-    color: #3333;
-    background-color: #eeee;
-    border: 1px solid #dddd;
-    cursor: pointer;
-    border-radius: 9px;
-}
-
-.goog-combobox input:hover {
-    border-color: white;
-}
-
-span.goog-combobox.goog-inline-block {
-    border-radius: 12px;
-    position: absolute;
-}
-
-.label-input-label:hover {
-    cursor: pointer;
-}
-
-#userrolepiechartdashboard {
-    width: 49%;
-    padding-left: 1%;
-    padding-bottom: 1%;
-    border: 1px solid black;
-    height: 645.5px;
-    max-height: 645.5px;
-}
-
-.goog-combobox-button {
-    opacity: 0;
-    background-color: white;
-    width: 0;
-}
-
-.goog-control.goog-inline-block {
-    font-weight: normal;
-    padding-right: 15px;
-}
-
-#filter_div1 {
-    display: flex;
-    align-items: center first baseline;
-}
-
-.google-visualization-controls-categoryfilter-selected.goog-inline-block {
-    left: 235px;
-    bottom: 13px;
-    position: relative;
-}
-
-.PageBodyCharts {
-    display: flex;
-    font-family: "Poppins";
-    flex-flow: row wrap;
-    justify-content: left;
-    width: 100%;
-    overflow: wrap;
+#formsubmit:hover {
+    cursor:pointer;
+    background-color:#8cb6fa;
+    font-family: "Zain", sans-serif;
 }
