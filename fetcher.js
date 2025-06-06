@@ -19,7 +19,7 @@ let arrayoverduetrue = [];
 let userrolegenre =[];
 let dateCounts = {};
 let dateCountArray = [];
-let dateCuntArrayFiltered = [];
+let dateCountArrayFiltered = [];
 async function getData() {
     const res = await fetch(url);
     const data = await res.json();
@@ -39,9 +39,9 @@ function countdate() {
     for (let date in dateCounts) {
     dateCountArray.push([date, dateCounts[date]]);
 }
-    for (let j = 0; j <dateCountArray.length; j+=2) {
-        dateCuntArrayFiltered.push(dateCountArray[j][0]);
-        dateCuntArrayFiltered.push(dateCountArray[j+1][1]);
+    for (let j = 0; j <dateCountArray.length; j++) {
+        dateCountArrayFiltered.push(dateCountArray[j][0]);
+        dateCountArrayFiltered.push(dateCountArray[j][1]);
     }
 }
 
@@ -161,9 +161,9 @@ getData().then(rdata => {
     drawborrowuserrolecolumn()
     countdate()
     drawcalenderchart()
-    console.log(dateCuntArrayFiltered[0])
-    console.log(dateCuntArrayFiltered[1])
-    setTimeout(() => {loader.classList.toggle("active")},1000)
+    setTimeout(() => {loader.classList.toggle("active")},1000);
+    console.log(dateCountArrayFiltered[0])
+    console.log(dateCountArrayFiltered[1])
     console.log(document.getElementById('calenderchart'))
 });
 
@@ -296,9 +296,9 @@ function drawcalenderchart() {
        var dataTable = new google.visualization.DataTable();
        dataTable.addColumn('date', 'Date');
        dataTable.addColumn('number', 'Count');
-       for (var i =0; i< dateCuntArrayFiltered.length; i+=2) {
+       for (var i =0; i< dateCountArrayFiltered.length; i+=2) {
        dataTable.addRows([
-          [ new Date(dateCuntArrayFiltered[i]), dateCuntArrayFiltered[i+1]]],
+          [ new Date(dateCountArrayFiltered[i]), dateCountArrayFiltered[i+1]]],
         )};
 
        var dashboard = new google.visualization.Dashboard(
@@ -319,7 +319,7 @@ function drawcalenderchart() {
                     'height': 600,
                     'pieSliceText': 'value',
                     'legend': 'right',
-                    'title': 'Date',
+                    'title': 'Amount of Books Borrowed on A Certain Date',
                 }
             });
             dashboard.bind(donutRangeSlider, columnChart);
