@@ -14,7 +14,7 @@
     border: 1px solid black;
     padding-bottom: 1%;
     flex: 0 0 48.9988603209%;
-    max-width:49%;
+    max-width: 49%;
 }
 
 .google-visualization-controls-rangefilter {
@@ -58,7 +58,7 @@ span.goog-combobox.goog-inline-block {
     height: 645.5px;
     max-height: 645.5px;
     flex: 0 0 48.77%;
-    max-width:49%;
+    max-width: 49%;
 }
 
 .goog-combobox-button {
@@ -81,7 +81,7 @@ span.goog-combobox.goog-inline-block {
     left: 235px;
     bottom: 13px;
     position: relative;
-    width:520px;
+    width: 520px;
 }
 
 .PageBodyCharts {
@@ -92,12 +92,14 @@ span.goog-combobox.goog-inline-block {
     width: 100%;
     flex-wrap: wrap;
 }
+
 .GraphsContainer {
     flex-flow: row wrap;
     justify-content: left;
     width: 100%;
     flex-wrap: wrap;
 }
+
 #borrowuserrolecolumn {
     font-weight: normal;
     width: 49%;
@@ -105,9 +107,8 @@ span.goog-combobox.goog-inline-block {
     border: 1px solid black;
     padding-bottom: 1%;
     flex: 0 0 48.9988603209%;
-    max-width:49%;
+    max-width: 49%;
 }
-
 
 #loaderwrapper {
     width: 100vw;
@@ -122,17 +123,19 @@ span.goog-combobox.goog-inline-block {
     transition: opacity .35s ease-in-out;
     z-index: 2;
 }
+
 #loaderwrapper.active {
     opacity: 1;
     pointer-events: auto;
 }
 
 #chart_div3 {
-    scale:80%;
-    left:-80px;
-    top:0;
-    position:relative;
+    scale: 80%;
+    left: -80px;
+    top: 0;
+    position: relative;
 }
+
 #calenderchart {
     width: 40%;
     padding-left: 1%;
@@ -141,10 +144,161 @@ span.goog-combobox.goog-inline-block {
     height: 645.5px;
     max-height: 645.5px;
     flex: 0 0 48.77%;
-    max-width:49%;
+    max-width: 49%;
 }
 
 #filter_div3 {
-    padding-left:1%;
-    padding-bottom:1%;
+    padding-left: 1%;
+    padding-bottom: 1%;
+}
+
+@media screen and (max-width: 1880px) {
+    .GraphsContainer {
+        display: inline-block;
+        width: 100%;
+        font-weight: bold;
+        font-size: 25px;
+        display: flex;
+        width: 100%
+    }
+    #chart_div {
+        padding-right: 5%;
+    }
+    #chart_div1 {
+        padding-right: 5%;
+    }
+    #dashboard_div {
+        font-weight: normal;
+        width: 50%;
+        padding-left: 1%;
+        border: 0px;
+        border-bottom: 1px solid black;
+        padding-bottom: 1%;
+        flex: 0 0 48.9988603209%;
+        max-width: 50%;
+        height: 800px;
+        max-height: 800px;
+    }
+    .google-visualization-controls-rangefilter {
+        display: flex;
+        overflow: wrap;
+    }
+    .google-visualization-controls-label {
+        float: left;
+        clear: left;
+        font-weight: normal;
+    }
+    .goog-combobox input {
+        padding: 10px 14px;
+        color: #3333;
+        background-color: #eeee;
+        border: 1px solid #dddd;
+        cursor: pointer;
+        border-radius: 9px;
+    }
+    .goog-combobox input:hover {
+        border-color: white;
+    }
+    span.goog-combobox.goog-inline-block {
+        border-radius: 12px;
+        position: absolute;
+    }
+    .label-input-label:hover {
+        cursor: pointer;
+    }
+    #userrolepiechartdashboard {
+        padding-left: 1%;
+        padding-bottom: 1%;
+        border: 0px;
+        border-bottom: 1px solid black;
+        height: 645.5px;
+        width: 50%;
+        height: 800px;
+        max-height: 800px;
+        flex: 0 0 50.77%;
+        max-width: 50%;
+    }
+    .goog-combobox-button {
+        opacity: 0;
+        background-color: white;
+        width: 0;
+    }
+    .goog-control.goog-inline-block {
+        font-weight: normal;
+        padding-right: 15px;
+    }
+    #filter_div1 {
+        display: flex;
+        align-items: center first baseline;
+    }
+    .google-visualization-controls-categoryfilter-selected.goog-inline-block {
+        left: 235px;
+        bottom: 13px;
+        position: relative;
+        width: 520px;
+    }
+    .PageBodyCharts {
+        display: flex;
+        font-family: "Poppins";
+        flex-flow: row wrap;
+        justify-content: left;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .GraphsContainer {
+        flex-flow: row wrap;
+        justify-content: left;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    #borrowuserrolecolumn {
+        font-weight: normal;
+        padding-left: 1%;
+        border: 0px;
+        border-bottom: 1px solid black;
+        padding-bottom: 1%;
+        width: 50%;
+        height: 800px;
+        max-height: 800px;
+        flex: 0 0 50.77%;
+        max-width: 50%;
+    }
+    #loaderwrapper {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background-color: #242f3f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .35s ease-in-out;
+        z-index: 2;
+    }
+    #loaderwrapper.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    #chart_div3 {
+        scale: 80%;
+        left: 5px;
+        top: 0;
+        position: relative;
+    }
+    #calenderchart {
+        width: 40%;
+        padding-left: 1%;
+        padding-bottom: 1%;
+        border: 0px;
+        border-bottom: 1px solid black;
+        height: 645.5px;
+        max-height: 645.5px;
+        flex: 0 0 48.77%;
+        max-width: 49%;
+    }
+    #filter_div3 {
+        padding-left: 1%;
+        padding-bottom: 1%;
+    }
 }

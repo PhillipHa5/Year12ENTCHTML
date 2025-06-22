@@ -16,10 +16,10 @@ ul {
 
 .sidebar {
     position: fixed;
-    height: 100%;
-    width: 2.7%;
+    height: 100vh;
+    width: 2.7vw;
     background-color: #dcfcca;
-    padding: 6px 0.3%;
+    padding: 6px 0.3vw;
     top: 0%;
     left: 0%;
     overflow: hidden;
@@ -112,7 +112,7 @@ ul {
 }
 
 .sidebar.active {
-    width: 8%;
+    width: 8vw;
 }
 
 .sidebar.active #menubtn {
@@ -206,154 +206,82 @@ body {
 }
 
 .loader {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  position: relative;
-  border: 4px solid #Fff;
-  animation: loader 2s infinite ease;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: 4px solid #Fff;
+    animation: loader 2s infinite ease;
 }
 
 .loader-inner {
-  vertical-align: top;
-  display: inline-block;
-  width: 100%;
-  background-color: #fff;
-  animation: loader-inner 2s infinite ease-in;
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+    animation: loader-inner 2s infinite ease-in;
 }
 
 @keyframes loader {
-  0% {
-    transform: rotate(0deg);
-  }
-  
-  25% {
-    transform: rotate(180deg);
-  }
-  
-  50% {
-    transform: rotate(180deg);
-  }
-  
-  75% {
-    transform: rotate(360deg);
-  }
-  
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(180deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes loader-inner {
-  0% {
-    height: 0%;
-  }
-  
-  25% {
-    height: 0%;
-  }
-  
-  50% {
-    height: 100%;
-  }
-  
-  75% {
-    height: 100%;
-  }
-  
-  100% {
-    height: 0%;
-  }
-}
-
-.RecordFromWrapper {
-    width:50vw;
-    height:55vh;
-    background-color:#dcfcca;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius:60px;
-}
-
-#AddRecordPage {
-    justify-content:center;
-}
-#AddRecordForm {
-    position:absolute;
-    width:300px;
-    scale:110%
-}
-#message {
-    display: none;
-    margin: 20px;
-    padding: 10px;
-    border-radius: 4px;
-    font-weight: bold;
-    top:195px;
-    position:relative;
-}
-
-#FormTitle {
-    position:absolute;
-    top:145px;
-    scale:130%;
-}
-input {
-    border-radius:6px;
-    float:right;
-    border: solid 1px black;
-}
-select {
-    border-radius:6px;
-    float:right;}
-
-#AddRecordForm label {
-    float:left;
-}
-
-#formsubmit {
-    background-color:lightskyblue;
-    padding:2px 15px;
-    color:white;
-    right:100px;
-    top:25px;
-    border-radius:15px;
-    scale:110%;
-    font-size:20px;
-    font-family: "Zain", sans-serif;
-    position:relative;
-}
-
-#formsubmit:hover {
-    cursor:pointer;
-    background-color:#8cb6fa;
-    font-family: "Zain", sans-serif;
+    0% {
+        height: 0%;
+    }
+    25% {
+        height: 0%;
+    }
+    50% {
+        height: 100%;
+    }
+    75% {
+        height: 100%;
+    }
+    100% {
+        height: 0%;
+    }
 }
 
 #HomePage {
     justify-content: center;
-    width:100%;
-    height:150px;
+    width: 100%;
+    height: 150px;
 }
+
 #HomeHeaderThing {
-    width:40%;
-    height:200px;
+    width: 40%;
+    height: 200px;
     position: relative;
     top: 0px;
 }
 
 #HomeImg {
-    left:25%;
-    position:relative;
+    left: 25%;
+    position: relative;
 }
 
 #HomeContents {
-    position:relative;
-    top:250px;
-    width:50%;
-    left:-6%;
-    text-align:center;
+    position: relative;
+    top: 250px;
+    width: 50%;
+    left: -6%;
+    text-align: center;
     font-family: "Roboto"
 }
 
@@ -362,9 +290,589 @@ select {
 }
 
 .Question {
-    width:100%;
-    float:left;
+    width: 100%;
+    float: left;
 }
+
 .Answer {
-    width:100%;
+    width: 100%;
+}
+
+.RecordFromWrapper {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    border: solid 2px lightgray;
+    background-color: white;
+}
+
+#AddRecordPage {
+    justify-content: center;
+}
+
+#AddRecordForm {
+    position: absolute;
+    width: 40vw;
+    scale: 110%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 70vh;
+}
+
+#message {
+    display: none;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    position: relative;
+    width: 500px;
+    top: 35%
+}
+
+#FormTitle {
+    top: 10%;
+    position: absolute;
+    font-size: 25px;
+}
+
+#formpage {
+    background-color: #ebe8e8;
+}
+
+hr {
+    width: 45vw;
+}
+
+.formitems {
+    flex-grow: 0;
+    flex-basis: 50%;
+    width: 400px;
+    flex-shrink: 0;
+}
+
+#AddRecordForm .forminput {
+    background-color: #e6e3e3;
+    border-radius: 7px;
+    border: none;
+    padding: 15px;
+    width: 300px;
+}
+
+.forminputcheckbox {
+    width: auto;
+}
+
+#AddRecordForm select {
+    background-color: #e6e3e3;
+    border-radius: 7px;
+    border: none;
+    padding: 15px;
+    width: 330px;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+#dropwdowninput {
+    position: relative;
+    padding: 0px;
+    border: 0px;
+    width: 25px;
+    height: 25px;
+    max-width: 25px;
+    max-height: 25px;
+    align-items: center;
+}
+
+.dropwdowninputwrapper {
+    display: flex;
+}
+
+#formsubmit {
+    border-radius: 7px;
+    background-color: #417ffa;
+    font-family: "Zain", sans-serif;
+    height: 50px;
+    width: 150px;
+    font-size: 25px;
+    color: white;
+    border: none;
+}
+
+#formsubmit:hover {
+    cursor: pointer;
+    background-color: #8cb6fa;
+}
+
+@media screen and (max-width: 1850px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0px;
+    }
+    .sidebar {
+        position: fixed;
+        height: 100vh;
+        width: 3vw;
+        background-color: #dcfcca;
+        padding: 6px 0.3vw;
+        top: 0%;
+        left: 0%;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        font-family: "Zain", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        font-size: 22px;
+    }
+    .sidebar .logo .logoicon {
+        display: flex;
+        height: 50px;
+        align-items: center;
+        width: 0px;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    .sidebar.active .logoname {
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+    .sidebar .logoname {
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+    .sidebar.active .logo .logoicon {
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+    .sidebar #menubtn {
+        position: absolute;
+        left: 50%;
+        top: 6px;
+        font-size: 20px;
+        height: 50px;
+        width: 50px;
+        display: block;
+        text-align: center;
+        line-height: 50px;
+        transform: translateX(-50%);
+        transition: 0.5s ease;
+    }
+    .sidebar ul {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .sidebar li {
+        position: relative;
+        height: 50px;
+        width: 50%;
+        margin: 0px;
+    }
+    .sidebar ul li a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        min-width: 50px;
+        border-radius: 100%;
+        transition: all 0.5s ease;
+    }
+    .sidebar.active ul li a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        min-width: 50px;
+        border-radius: 12px;
+    }
+    .sidebar ul li a i {
+        height: 50px;
+        min-width: 50px;
+        border-radius: 12px;
+        line-height: 50px;
+        text-align: center;
+    }
+    .sidebar ul li a:hover {
+        background: white;
+    }
+    .sidebar.active {
+        width: 10vw;
+        height: 100vh;
+    }
+    .sidebar.active #menubtn {
+        left: 85%;
+    }
+    .sidebar.active ul li {
+        width: 150px;
+    }
+    #menubtn:hover {
+        cursor: pointer;
+        background: white;
+        border-radius: 100%;
+    }
+    .sidebar.active .navbarname {
+        opacity: 1;
+        pointer-events: auto;
+        transition: all 0.5s ease;
+    }
+    .sidebar .navbarname {
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.5s ease;
+        overflow: hidden;
+        min-width: 100px;
+    }
+    .logoname {
+        padding-left: 15px;
+    }
+    .logo {
+        margin-left: 17px;
+        transition: all 0.5s ease;
+    }
+    .sidebar.active .logo {
+        transition: all 0.5s ease;
+    }
+    .PageContents.active {
+        width: 89.4%;
+        left: 10.6%;
+        transition: all 0.5s ease;
+    }
+    .PageContents {
+        position: absolute;
+        display: flex;
+        width: 96.4%;
+        left: 3.6%;
+        transition: all 0.5s ease;
+        overflow-wrap: normal;
+        flex-wrap: wrap;
+    }
+    .PageBody div {
+        max-width: 75vw;
+    }
+    #MainTable_wrapper {
+        max-width: 75vw;
+        scale: 50%;
+        transform-origin: top left;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0px;
+    }
+    .sidebar {
+        position: fixed;
+        height: 100vh;
+        width: 5vw;
+        background-color: #dcfcca;
+        padding: 6px 0.3vw;
+        top: 0%;
+        left: 0%;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        font-family: "Zain", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        font-size: 22px;
+    }
+    .sidebar .logo .logoicon {
+        display: flex;
+        height: 50px;
+        align-items: center;
+        width: 0px;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    .sidebar.active .logoname {
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+    .sidebar .logoname {
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+    .sidebar.active .logo .logoicon {
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+    .sidebar #menubtn {
+        position: absolute;
+        left: 50%;
+        top: 6px;
+        font-size: 20px;
+        height: 50px;
+        width: 50px;
+        display: block;
+        text-align: center;
+        line-height: 50px;
+        transform: translateX(-50%);
+        transition: 0.5s ease;
+    }
+    .sidebar ul {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .sidebar li {
+        position: relative;
+        height: 50px;
+        width: 50%;
+        margin: 0px;
+    }
+    .sidebar ul li a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        min-width: 50px;
+        border-radius: 100%;
+        transition: all 0.5s ease;
+    }
+    .sidebar.active ul li a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        min-width: 50px;
+        border-radius: 12px;
+    }
+    .sidebar ul li a i {
+        height: 50px;
+        min-width: 50px;
+        border-radius: 12px;
+        line-height: 50px;
+        text-align: center;
+    }
+    .sidebar ul li a:hover {
+        background: white;
+    }
+    .sidebar.active {
+        width: 15vw;
+        height: 100vh;
+    }
+    .sidebar.active #menubtn {
+        left: 85%;
+    }
+    .sidebar.active ul li {
+        width: 150px;
+    }
+    #menubtn:hover {
+        cursor: pointer;
+        background: white;
+        border-radius: 100%;
+    }
+    .sidebar.active .navbarname {
+        opacity: 1;
+        pointer-events: auto;
+        transition: all 0.5s ease;
+    }
+    .sidebar .navbarname {
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.5s ease;
+        overflow: hidden;
+        min-width: 100px;
+    }
+    .logoname {
+        padding-left: 15px;
+    }
+    .logo {
+        margin-left: 17px;
+        transition: all 0.5s ease;
+    }
+    .sidebar.active .logo {
+        transition: all 0.5s ease;
+    }
+    .PageContents.active {
+        width: 84.4%;
+        left: 15.6%;
+        transition: all 0.5s ease;
+    }
+    .PageContents {
+        position: absolute;
+        display: flex;
+        width: 94.4%;
+        left: 5.6%;
+        transition: all 0.5s ease;
+        overflow-wrap: normal;
+        flex-wrap: wrap;
+    }
+    .PageBody div {
+        max-width: 75vw;
+    }
+    #MainTable_wrapper {
+        max-width: 75vw;
+        scale: 50%;
+        transform-origin: top left;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0px;
+    }
+    .sidebar {
+        position: fixed;
+        height: 100vh;
+        width: 5vw;
+        background-color: #dcfcca;
+        padding: 6px 0.3vw;
+        top: 0%;
+        left: 0%;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        font-family: "Zain", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        font-size: 22px;
+    }
+    .sidebar .logo .logoicon {
+        display: flex;
+        height: 50px;
+        align-items: center;
+        width: 0px;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    .sidebar.active .logoname {
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+    .sidebar .logoname {
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+    .sidebar.active .logo .logoicon {
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+    .sidebar #menubtn {
+        position: absolute;
+        left: 50%;
+        top: 6px;
+        font-size: 20px;
+        height: 50px;
+        width: 50px;
+        display: block;
+        text-align: center;
+        line-height: 50px;
+        transform: translateX(-50%);
+        transition: 0.5s ease;
+    }
+    .sidebar ul {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .sidebar li {
+        position: relative;
+        height: 50px;
+        width: 50%;
+        margin: 0px;
+    }
+    .sidebar ul li a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        min-width: 50px;
+        border-radius: 100%;
+        transition: all 0.5s ease;
+    }
+    .sidebar.active ul li a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        min-width: 50px;
+        border-radius: 12px;
+    }
+    .sidebar ul li a i {
+        height: 50px;
+        min-width: 50px;
+        border-radius: 12px;
+        line-height: 50px;
+        text-align: center;
+    }
+    .sidebar ul li a:hover {
+        background: white;
+    }
+    .sidebar.active {
+        width: 20vw;
+        height: 100vh;
+    }
+    .sidebar.active #menubtn {
+        left: 85%;
+    }
+    .sidebar.active ul li {
+        width: 150px;
+    }
+    #menubtn:hover {
+        cursor: pointer;
+        background: white;
+        border-radius: 100%;
+    }
+    .sidebar.active .navbarname {
+        opacity: 1;
+        pointer-events: auto;
+        transition: all 0.5s ease;
+    }
+    .sidebar .navbarname {
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.5s ease;
+        overflow: hidden;
+        min-width: 100px;
+    }
+    .logoname {
+        padding-left: 15px;
+    }
+    .logo {
+        margin-left: 17px;
+        transition: all 0.5s ease;
+    }
+    .sidebar.active .logo {
+        transition: all 0.5s ease;
+    }
+    .PageContents.active {
+        width: 79.4%;
+        left: 20.6%;
+        transition: all 0.5s ease;
+    }
+    .PageContents {
+        position: absolute;
+        display: flex;
+        width: 94.4%;
+        left: 5.6%;
+        transition: all 0.5s ease;
+        overflow-wrap: normal;
+        flex-wrap: wrap;
+    }
+    .PageBody div {
+        max-width: 75vw;
+    }
+    #MainTable_wrapper {
+        max-width: 75vw;
+        scale: 50%;
+        transform-origin: top left;
+    }
 }

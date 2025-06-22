@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css">
@@ -7,45 +8,46 @@
     <link rel="stylesheet" href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.css">
     <link rel="icon" href="images/mfgs.png">
-    
+
 </head>
+
 <body>
     <div class="sidebar active">
         <div class="logo">
             <div class="logoicon">
-                <i class='bx  bx-book-open'></i> 
+                <i class='bx  bx-book-open'></i>
                 <div class="logoname">MFHS</div>
             </div>
-            <i class='bx  bx-menu' id="menubtn"></i> 
+            <i class='bx  bx-menu' id="menubtn"></i>
         </div>
         <ul class="navlist">
             <li>
                 <a href="Home.html">
-                    <i class='bx  bx-home'></i> 
+                    <i class='bx  bx-home'></i>
                     <span class="navbarname">Home</span>
                 </a>
             </li>
             <li>
                 <a href="MainTable.html" id="CurrentPage">
-                    <i class='bx  bx-table-columns'></i> 
+                    <i class='bx  bx-table-columns'></i>
                     <span class="navbarname">Main Table</span>
                 </a>
             </li>
             <li>
                 <a href="Charts.html">
-                    <i class='bx  bx-chart-bar-big-columns'></i> 
+                    <i class='bx  bx-chart-bar-big-columns'></i>
                     <span class="navbarname">View Graphs</span>
                 </a>
             </li>
             <li>
                 <a href="Create.html">
-                    <i class='bx  bx-plus-circle'  ></i> 
+                    <i class='bx  bx-plus-circle'></i>
                     <span class="navbarname">Add Record</span>
                 </a>
             </li>
             <li>
                 <a href="Help.html">
-                    <i class='bx  bx-info-circle'  ></i> 
+                    <i class='bx  bx-info-circle'></i>
                     <span class="navbarname">Help</span>
                 </a>
             </li>
@@ -54,20 +56,20 @@
     <div class="PageContents active">
         <div class="PageHeader">Main Table</div>
         <div class="PageBody">
-            <table id="MainTable" class="display">
-        <thead>
-            <tr>
-                <th>user_id</th>
-                <th>book_id</th>
-                <th>borrow_date</th>
-                <th>return_date</th>
-                <th>reservation_status</th>
-                <th>overdue_status</th>
-                <th>user_role</th>
-                <th>book_category</th>
-            </tr>
-        </thead>
-    </table>
+            <table id="MainTable" class="display compact order-column" style="width:5px">
+                <thead>
+                    <tr>
+                        <th>user_id</th>
+                        <th>book_id</th>
+                        <th>borrow_date</th>
+                        <th>return_date</th>
+                        <th>reservation_status</th>
+                        <th>overdue_status</th>
+                        <th>user_role</th>
+                        <th>book_category</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -76,4 +78,5 @@
     <script src="scripts.js"></script>
     <script src="tablescripts.js"></script>
 </body>
+
 </html>
