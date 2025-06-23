@@ -1,14 +1,25 @@
 const form = document.getElementById("AddRecordForm");
 const submitButton = document.getElementById("formsubmit");
 const messageDiv = document.getElementById("message");
-
+const notif = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+    }
+});
 
 form.addEventListener("submit", async function(e) {
     e.preventDefault();
     Swal.fire({
         title: "Submitting...",
         text: "Submitting Form",
-        icon: "success"
+        icon: "success",
+        timer: 2500,
     });
     const bd = new Date(document.getElementById("borrow_date").value);
     const rd = new Date(document.getElementById("return_date").value);
@@ -29,7 +40,8 @@ form.addEventListener("submit", async function(e) {
                 Swal.fire({
                     title: "Error",
                     text: "Error: Cannot Submit empty records",
-                    icon: "error"
+                    icon: "error",
+                    timer: 2500,
                 });
                 errorstatus = 1;
                 form.reset()
@@ -38,7 +50,8 @@ form.addEventListener("submit", async function(e) {
                 Swal.fire({
                     title: "Error",
                     text: "Error: Return Date is before Borrow Date",
-                    icon: "error"
+                    icon: "error",
+                    timer: 2500,
                 });
                 errorstatus = 1;
                 form.reset()
@@ -65,10 +78,10 @@ form.addEventListener("submit", async function(e) {
             });
             const data = await response.json();
             if (data.status === "success") {
-                Swal.fire({
-                    title: "Success",
-                    text: "Data submitted successfully!",
-                    icon: "success"
+                notif.fire({
+                    icon: "success",
+                    title: "Submitted successfully",
+                    timer: 2500,
                 });
                 form.reset();
             } else {
@@ -79,7 +92,8 @@ form.addEventListener("submit", async function(e) {
         Swal.fire({
             title: "Error",
             text: "Error: " + error.message,
-            icon: "error"
+            icon: "error",
+            timer: 2500,
         });
     } finally {
         submitButton.disabled = false;
