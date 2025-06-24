@@ -409,6 +409,12 @@ select:hover {
     background-color: #8cb6fa;
 }
 
+#MainTable_wrapper {
+    max-width: 100%;
+    scale: 100%;
+    transform-origin: top left;
+}
+
 @media screen and (max-width: 1850px) {
     body {
         height: 100vh;

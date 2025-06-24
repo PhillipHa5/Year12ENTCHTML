@@ -23,8 +23,6 @@ form.addEventListener("submit", async function(e) {
     });
     const bd = new Date(document.getElementById("borrow_date").value);
     const rd = new Date(document.getElementById("return_date").value);
-    console.log(typeof(bd))
-    console.log(typeof(rd))
     submitButton.disabled = true;
     let errorstatus = 0;
 
