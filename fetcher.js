@@ -20,12 +20,19 @@ let userrolegenre = [];
 let dateCounts = {};
 let dateCountArray = [];
 let dateCountArrayFiltered = [];
+const averagedayselement = document.getElementById('averagedaysoverdue');
+const averagedaysbetweendates = document.getElementById('averagedaysbetweendates');
+const totalbooksreserved = document.getElementById('totalbooksreserved');
+const totalbooksborrowed = document.getElementById('totalbooksborrowed')
 async function getData() {
     const res = await fetch(url);
     const data = await res.json();
     return data;
 }
-
+function totalcountofarray(e) {
+    let result = e.length;
+    return result
+}
 function countdate() {
     for (let i = 0; i < borrowdate.length; i++) {
         let date = borrowdate[i];
@@ -66,6 +73,7 @@ function calculatedistinctcount(genre, userrole, array) {
 
 function sumofarray(a) {
     sum = a.reduce((partialSum, b) => partialSum + b, 0);
+    return sum
 }
 ///Differnece between dates
 function diffbtdates(a, b) {
@@ -83,8 +91,8 @@ function countofarray(chosenarray, chosenfilter) {
 ///Average of variable
 function averageofarray(a) {
     sum = a.reduce((partialSum, b) => partialSum + b, 0)
-    average = sum / a.length;
-    return a
+    let average = sum / a.length;
+    return average
 }
 
 function avgdiffbtdatesonoverdue() {
@@ -112,6 +120,9 @@ function countoverdue(a) {
     }
 }
 
+function appendvalue(a, b) {
+    a.textContent = b;
+}
 
 getData().then(rdata => {
     array = rdata.data;
@@ -156,17 +167,17 @@ getData().then(rdata => {
     averageofarray(arrayoverduefalse)
     averageofarray(arrayoverduetrue)
     countoverdue(arrayoverduetrue)
+    appendvalue(averagedayselement, Math.round(averageofarray(arrayoverduetrue),0))
+    appendvalue(averagedaysbetweendates, Math.round(averageofarray(differencebtdates),0))
+    appendvalue(totalbooksborrowed, totalcountofarray(borrowdate))
+    appendvalue(totalbooksreserved, sumofarray(reservationstatus))
     drawoverduebooksChart()
     userrolepiechart()
     joinarray(userrole, bookcategory, userrolegenre)
-    console.log(calculatedistinctcount("art", "student", userrolegenre))
     drawborrowuserrolecolumn()
     countdate()
     drawcalenderchart()
     setTimeout(() => { loader.classList.toggle("active") }, 1000);
-    console.log(dateCountArrayFiltered[0])
-    console.log(dateCountArrayFiltered[1])
-    console.log(document.getElementById('calenderchart'))
 });
 
 function drawoverduebooksChart() {
@@ -196,11 +207,11 @@ function drawoverduebooksChart() {
                 'chartType': 'ColumnChart',
                 'containerId': 'chart_div',
                 'options': {
-                    'width': 700,
-                    'height': 600,
+                    'width': 800,
+                    'height': 750,
                     'pieSliceText': 'value',
-                    'legend': 'right',
-                    'title': 'Number of Overdue Books for how long they are borrowed for',
+                    'legend': { position: 'top', maxLines: 3 },
+                    'title': 'Number of Overdue Books and borrow length',
                     vAxes: {
                         0: {
                             title: 'Number of Overdue Books',
@@ -223,7 +234,6 @@ function userrolepiechart() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'User Role');
         data.addColumn('number', 'Number Of People');
-        console.log(countofarray(userrole, "student"))
         data.addRows([
             ['Student', countofarray(userrole, "student")],
             ['Faculty', countofarray(userrole, "faculty")],
@@ -242,7 +252,7 @@ function userrolepiechart() {
             'chartType': 'PieChart',
             'containerId': 'chart_div1',
             'options': {
-                'width': 600,
+                'width': 800,
                 'height': 600,
                 'pieSliceText': 'value',
                 'legend': { position: 'top', maxLines: 3 },
@@ -280,8 +290,8 @@ function drawborrowuserrolecolumn() {
             'chartType': 'ColumnChart',
             'containerId': 'chart_div2',
             'options': {
-                'title': "Amount of books borrowed for each Genre and who borrows it",
-                'width': 600,
+                'title': "Number of Books Borrowed for Each Genre and User Role",
+                'width': 800,
                 'height': 600,
                 'legend': { position: 'top', maxLines: 3 },
                 'bar': { groupWidth: '75%' },
@@ -320,7 +330,7 @@ function drawcalenderchart() {
             'containerId': 'chart_div3',
             'options': {
                 'width': 950,
-                'height': 600,
+                'height': 950,
                 'pieSliceText': 'value',
                 'legend': 'right',
                 'title': 'Amount of Books Borrowed on A Certain Date',

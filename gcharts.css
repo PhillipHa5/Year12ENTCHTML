@@ -1,22 +1,4 @@
-.GraphsContainer {
-    display: inline-block;
-    width: 100%;
-    font-weight: bold;
-    font-size: 25px;
-    display: flex;
-    width: 100%
-}
-
-#dashboard_div {
-    font-weight: normal;
-    width: 49%;
-    padding-left: 1%;
-    border: 1px solid black;
-    padding-bottom: 1%;
-    flex: 0 0 48.9988603209%;
-    max-width: 49%;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zain:wght@300&display=swap');
 .google-visualization-controls-rangefilter {
     display: flex;
     overflow: wrap;
@@ -50,15 +32,195 @@ span.goog-combobox.goog-inline-block {
     cursor: pointer;
 }
 
-#userrolepiechartdashboard {
-    width: 49%;
+.goog-combobox-button {
+    opacity: 0;
+    background-color: white;
+    width: 0;
+}
+
+.goog-control.goog-inline-block {
+    font-weight: normal;
+    padding-right: 15px;
+}
+
+#filter_div1 {
+    display: flex;
+    align-items: center first baseline;
+}
+
+.google-visualization-controls-categoryfilter-selected.goog-inline-block {
+    left: 235px;
+    bottom: 0px;
+    position: relative;
+    width: 520px;
+}
+
+.google-visualization-controls-categoryfilter {
+    position:relative;
+    bottom:25px;
+    left:15px;
+    display:inline-block;
+}
+#loaderwrapper {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: #242f3f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s ease-in-out;
+    z-index: 2;
+}
+
+#loaderwrapper.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#filter_div3 {
     padding-left: 1%;
-    padding-bottom: 1%;
-    border: 1px solid black;
-    height: 645.5px;
-    max-height: 645.5px;
-    flex: 0 0 48.77%;
-    max-width: 49%;
+}
+.PageContents .DashBoardItemWrapper {
+    background-color:white;
+    width:20.7vw;
+    padding:5px 25px 25px 25px;
+    transition: all 0.5s ease;
+}
+
+
+.PageContents.active .DashBoardItemWrapper {
+    background-color:white;
+    width:19.4vw;
+    padding:5px 25px 25px 25px;
+    transition: all 0.5s ease;
+}
+.DashboardItemHeader {
+    text-align:left;
+    font-family: "Poppins";
+    font-size:0.95rem;
+}
+#ChartsContents {
+    background-color: #ebe8e8;
+    font-family: "Poppins";
+}
+.DashboardItem {
+    font-family: "Poppins";
+    text-align:center;
+    padding-top:25px;
+    font-size:2rem;
+    height:5vh
+}
+
+#DashboardStats {
+    display:flex;
+    gap:10px;
+    margin-left:10px;
+    margin-top:10px;
+    max-width:100%;
+    width:100%;
+}
+
+#calenderchart {
+    background-color: white;
+    transform-origin: top left;
+    width:760px;
+    height:784.31px;
+    padding-right:115px;
+    transition: all 0.5s ease;
+}
+.GraphsContainer {
+    display:flex;
+    gap:15px;
+    max-width:100%;
+    height:auto;
+    flex-wrap:wrap;
+    margin-left:10px;
+    margin-top:10px;
+    padding-bottom:5vh;
+}
+
+#dashboard_div1 {
+    background-color: white;
+    scale:80%;
+    transform-origin: top left;
+    max-height:max-content;
+    max-width:max-content;
+}
+
+#overduebarchart {
+    background-color:white;
+    padding-right:130px;
+    transition: all 0.5s ease;
+}
+
+#userrolepiechartdashboard {
+    background-color:white;
+    padding-right:75px;
+    transition: all 0.5s ease;
+}
+.PageContents.active #userrolepiechartdashboard {
+    padding-right:0px;
+    transition: all 0.5s ease;
+}
+#borrowuserrolecolumn {
+    background-color:white;
+    transition: all 0.5s ease;
+    padding-right:130px;
+}
+.PageContents.active #borrowuserrolecolumn {
+    padding-right:105px;
+    transition: all 0.5s ease;
+}
+.PageContents.active #calenderchart {
+    padding-right:40px;
+    transition: all 0.5s ease;
+}
+.PageContents.active #overduebarchart {
+    padding-right:105px;
+}
+.google-visualization-controls-slider-thumb:hover{
+    cursor:pointer;
+}
+
+@media screen and (max-width: 1890px) {
+    .PageBodyCharts {
+        overflow-y: auto;
+        overflow-x:hidden;
+    }
+    .google-visualization-controls-rangefilter {
+    display: flex;
+    overflow: wrap;
+}
+
+.google-visualization-controls-label {
+    float: left;
+    clear: left;
+    font-weight: normal;
+}
+
+.goog-combobox input {
+    padding: 10px 14px;
+    color: #3333;
+    background-color: #eeee;
+    border: 1px solid #dddd;
+    cursor: pointer;
+    border-radius: 9px;
+}
+
+.goog-combobox input:hover {
+    border-color: white;
+}
+
+span.goog-combobox.goog-inline-block {
+    border-radius: 12px;
+    position: absolute;
+}
+
+.label-input-label:hover {
+    cursor: pointer;
 }
 
 .goog-combobox-button {
@@ -79,37 +241,17 @@ span.goog-combobox.goog-inline-block {
 
 .google-visualization-controls-categoryfilter-selected.goog-inline-block {
     left: 235px;
-    bottom: 13px;
+    bottom: 0px;
     position: relative;
     width: 520px;
 }
 
-.PageBodyCharts {
-    display: flex;
-    font-family: "Poppins";
-    flex-flow: row wrap;
-    justify-content: left;
-    width: 100%;
-    flex-wrap: wrap;
+.google-visualization-controls-categoryfilter {
+    position:relative;
+    bottom:25px;
+    left:15px;
+    display:inline-block;
 }
-
-.GraphsContainer {
-    flex-flow: row wrap;
-    justify-content: left;
-    width: 100%;
-    flex-wrap: wrap;
-}
-
-#borrowuserrolecolumn {
-    font-weight: normal;
-    width: 49%;
-    padding-left: 1%;
-    border: 1px solid black;
-    padding-bottom: 1%;
-    flex: 0 0 48.9988603209%;
-    max-width: 49%;
-}
-
 #loaderwrapper {
     width: 100vw;
     height: 100vh;
@@ -129,176 +271,353 @@ span.goog-combobox.goog-inline-block {
     pointer-events: auto;
 }
 
-#chart_div3 {
-    scale: 80%;
-    left: -80px;
-    top: 0;
-    position: relative;
+#filter_div3 {
+    padding-left: 1%;
+}
+.PageContents .DashBoardItemWrapper {
+    background-color:white;
+    width:16.5vw;
+    padding:5px 25px 25px 25px;
+    transition: all 0.5s ease;
 }
 
+
+.PageContents.active .DashBoardItemWrapper {
+    background-color:white;
+    width:14.5vw;
+    padding:5px 25px 25px 25px;
+    transition: all 0.5s ease;
+}
+.DashboardItemHeader {
+    text-align:left;
+    font-family: "Poppins";
+    font-size:0.95rem;
+}
+#ChartsContents {
+    background-color: #ebe8e8;
+    font-family: "Poppins";
+}
+.DashboardItem {
+    font-family: "Poppins";
+    text-align:center;
+    padding-top:25px;
+    font-size:2rem;
+    height:5vh
+}
+
+#DashboardStats {
+    display:flex;
+    gap:1vw;
+    margin-left:10px;
+    margin-top:10px;
+    max-width:100%;
+    width:90vw;
+}
+
+.PageContents.active #DashboardStats {
+    display:flex;
+    gap:1vw;
+    margin-left:10px;
+    margin-top:10px;
+    max-width:100%;
+    width:80vw;
+}
+
+
 #calenderchart {
-    width: 40%;
-    padding-left: 1%;
-    padding-bottom: 1%;
-    border: 1px solid black;
-    height: 645.5px;
-    max-height: 645.5px;
-    flex: 0 0 48.77%;
-    max-width: 49%;
+    background-color: white;
+    transform-origin: top left;
+    width:70vw;
+    padding-right:19.5vw;
+    transition: all 0.5s ease;
+}
+.GraphsContainer {
+    display:flex;
+    gap:15px;
+    max-width:100%;
+    height:auto;
+    flex-wrap:wrap;
+    margin-left:10px;
+    margin-top:10px;
+    padding-bottom:5vh;
+}
+
+#dashboard_div1 {
+    background-color: white;
+    scale:80%;
+    transform-origin: top left;
+    max-height:max-content;
+    max-width:max-content;
+}
+
+#overduebarchart {
+    background-color:white;
+    padding-right:7.8vw;
+    transition: all 0.5s ease;
+}
+
+#userrolepiechartdashboard {
+    background-color:white;
+    padding-right:7.8vw;
+    transition: all 0.5s ease;
+}
+.PageContents.active #userrolepiechartdashboard {
+    padding-right:0px;
+    transition: all 0.5s ease;
+    scale: 98%;
+    transform-origin: top left;
+}
+#borrowuserrolecolumn {
+    background-color:white;
+    transition: all 0.5s ease;
+    padding-right:7.8vw;
+}
+.PageContents.active #borrowuserrolecolumn {
+    padding-right:0px;
+    transition: all 0.5s ease;
+    scale: 98%;
+    transform-origin: top left;
+}
+.PageContents.active #calenderchart {
+    padding-right:10vw;
+    transition: all 0.5s ease;
+}
+.PageContents.active #overduebarchart {
+    padding-right:0px;
+    scale: 98%;
+    transform-origin: top left;
+}
+.google-visualization-controls-slider-thumb:hover{
+    cursor:pointer;
+}
+}
+@media screen and (max-width: 840px) {
+    .PageBodyCharts {
+        overflow-y: auto;
+        overflow-x:hidden;
+    }
+    .google-visualization-controls-rangefilter {
+    display: flex;
+    overflow: wrap;
+}
+
+.google-visualization-controls-label {
+    float: left;
+    clear: left;
+    font-weight: normal;
+}
+
+.goog-combobox input {
+    padding: 10px 14px;
+    color: #3333;
+    background-color: #eeee;
+    border: 1px solid #dddd;
+    cursor: pointer;
+    border-radius: 9px;
+}
+
+.goog-combobox input:hover {
+    border-color: white;
+}
+
+span.goog-combobox.goog-inline-block {
+    border-radius: 12px;
+    position: absolute;
+}
+
+.label-input-label:hover {
+    cursor: pointer;
+}
+
+.goog-combobox-button {
+    opacity: 0;
+    background-color: white;
+    width: 0;
+}
+
+.goog-control.goog-inline-block {
+    font-weight: normal;
+    padding-right: 15px;
+}
+
+#filter_div1 {
+    display: flex;
+    align-items: center first baseline;
+}
+
+.google-visualization-controls-categoryfilter-selected.goog-inline-block {
+    left: 235px;
+    bottom: 0px;
+    position: relative;
+    width: 520px;
+}
+
+.google-visualization-controls-categoryfilter {
+    position:relative;
+    bottom:25px;
+    left:15px;
+    display:inline-block;
+}
+#loaderwrapper {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: #242f3f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s ease-in-out;
+    z-index: 2;
+}
+
+#loaderwrapper.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 #filter_div3 {
     padding-left: 1%;
-    padding-bottom: 1%;
+}
+.PageContents .DashBoardItemWrapper {
+    background-color:white;
+    width:15.5vw;
+    padding:5px 25px 25px 25px;
+    transition: all 0.5s ease;
 }
 
-@media screen and (max-width: 1880px) {
-    .GraphsContainer {
-        display: inline-block;
-        width: 100%;
-        font-weight: bold;
-        font-size: 25px;
-        display: flex;
-        width: 100%
-    }
-    #chart_div {
-        padding-right: 5%;
-    }
-    #chart_div1 {
-        padding-right: 5%;
-    }
-    #dashboard_div {
-        font-weight: normal;
-        width: 50%;
-        padding-left: 1%;
-        border: 0px;
-        border-bottom: 1px solid black;
-        padding-bottom: 1%;
-        flex: 0 0 48.9988603209%;
-        max-width: 50%;
-        height: 800px;
-        max-height: 800px;
-    }
-    .google-visualization-controls-rangefilter {
-        display: flex;
-        overflow: wrap;
-    }
-    .google-visualization-controls-label {
-        float: left;
-        clear: left;
-        font-weight: normal;
-    }
-    .goog-combobox input {
-        padding: 10px 14px;
-        color: #3333;
-        background-color: #eeee;
-        border: 1px solid #dddd;
-        cursor: pointer;
-        border-radius: 9px;
-    }
-    .goog-combobox input:hover {
-        border-color: white;
-    }
-    span.goog-combobox.goog-inline-block {
-        border-radius: 12px;
-        position: absolute;
-    }
-    .label-input-label:hover {
-        cursor: pointer;
-    }
-    #userrolepiechartdashboard {
-        padding-left: 1%;
-        padding-bottom: 1%;
-        border: 0px;
-        border-bottom: 1px solid black;
-        height: 645.5px;
-        width: 50%;
-        height: 800px;
-        max-height: 800px;
-        flex: 0 0 50.77%;
-        max-width: 50%;
-    }
-    .goog-combobox-button {
-        opacity: 0;
-        background-color: white;
-        width: 0;
-    }
-    .goog-control.goog-inline-block {
-        font-weight: normal;
-        padding-right: 15px;
-    }
-    #filter_div1 {
-        display: flex;
-        align-items: center first baseline;
-    }
-    .google-visualization-controls-categoryfilter-selected.goog-inline-block {
-        left: 235px;
-        bottom: 13px;
-        position: relative;
-        width: 520px;
-    }
-    .PageBodyCharts {
-        display: flex;
-        font-family: "Poppins";
-        flex-flow: row wrap;
-        justify-content: left;
-        width: 100%;
-        flex-wrap: wrap;
-    }
-    .GraphsContainer {
-        flex-flow: row wrap;
-        justify-content: left;
-        width: 100%;
-        flex-wrap: wrap;
-    }
-    #borrowuserrolecolumn {
-        font-weight: normal;
-        padding-left: 1%;
-        border: 0px;
-        border-bottom: 1px solid black;
-        padding-bottom: 1%;
-        width: 50%;
-        height: 800px;
-        max-height: 800px;
-        flex: 0 0 50.77%;
-        max-width: 50%;
-    }
-    #loaderwrapper {
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        background-color: #242f3f;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity .35s ease-in-out;
-        z-index: 2;
-    }
-    #loaderwrapper.active {
-        opacity: 1;
-        pointer-events: auto;
-    }
-    #chart_div3 {
-        scale: 80%;
-        left: 5px;
-        top: 0;
-        position: relative;
-    }
-    #calenderchart {
-        width: 40%;
-        padding-left: 1%;
-        padding-bottom: 1%;
-        border: 0px;
-        border-bottom: 1px solid black;
-        height: 645.5px;
-        max-height: 645.5px;
-        flex: 0 0 48.77%;
-        max-width: 49%;
-    }
-    #filter_div3 {
-        padding-left: 1%;
-        padding-bottom: 1%;
-    }
+
+.PageContents.active .DashBoardItemWrapper {
+    background-color: white;
+    width: 12vw;
+    padding: 5px 25px 25px 25px;
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-bottom: 0px;
+}
+.DashboardItemHeader {
+    text-align:left;
+    font-family: "Poppins";
+    font-size:0.95rem;
+}
+#ChartsContents {
+    background-color: #ebe8e8;
+    font-family: "Poppins";
+}
+.DashboardItem {
+    font-family: "Poppins";
+    padding-top:25px;
+    font-size:2rem;
+    position:relative;
+    bottom:0;
+    height:5vh
+}
+.PageContents.active .DashboardItem {
+    position:relative;
+    bottom:0;
+    margin-top:auto;
+}
+#DashboardStats {
+    display:flex;
+    gap:10px;
+    margin-left:10px;
+    margin-top:10px;
+    max-width:100%;
+    width:90vw;
+}
+
+.PageContents.active #DashboardStats {
+    display:flex;
+    gap:10px;
+    margin-left:10px;
+    margin-top:10px;
+    max-width:100%;
+    width:80vw;
+}
+
+
+#calenderchart {
+    background-color: white;
+    transform-origin: top left;
+    width:70vw;
+    padding-right:19.5vw;
+    transition: all 0.5s ease;
+}
+.GraphsContainer {
+    display:flex;
+    gap:15px;
+    max-width:100%;
+    height:auto;
+    flex-wrap:wrap;
+    margin-left:10px;
+    margin-top:10px;
+    padding-bottom:5vh;
+}
+
+#dashboard_div1 {
+    background-color: white;
+    scale:80%;
+    transform-origin: top left;
+    max-height:max-content;
+    max-width:max-content;
+}
+
+#overduebarchart {
+    background-color:white;
+    padding-right:7.8vw;
+    transition: all 0.5s ease;
+    scale:85%;
+    transform-origin: top left;
+}
+
+#userrolepiechartdashboard {
+    background-color:white;
+    padding-right:7.8vw;
+    transition: all 0.5s ease;
+    scale:85%;
+    transform-origin: top left;
+}
+.PageContents.active #userrolepiechartdashboard {
+    padding-right:0px;
+    transition: all 0.5s ease;
+    scale:78%;
+    transform-origin:top left;
+}
+#borrowuserrolecolumn {
+    background-color:white;
+    transition: all 0.5s ease;
+    padding-right:7.8vw;
+    scale:85%;
+    transform-origin: top left;
+}
+.PageContents.active #dashboard_div1 {
+    padding-right:2vw;
+    transition: all 0.5s ease;
+    scale:65%;
+    transform-origin:top left;
+}
+.PageContents.active #calenderchart {
+    padding-right:10vw;
+    transition: all 0.5s ease;
+    scale:95%;
+    transform-origin:top left;
+}
+.PageContents.active #overduebarchart {
+    padding-right:0px;
+    scale:78%;
+    transform-origin:top left;
+}
+.PageContents.active #borrowuserrolecolumn {
+    padding-right:0px;
+    transition: all 0.5s ease;
+    scale:78%;
+    transform-origin:top left;
+}
+
+.google-visualization-controls-slider-thumb:hover{
+    cursor:pointer;
+}
 }

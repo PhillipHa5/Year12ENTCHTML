@@ -38,7 +38,7 @@
             <li>
                 <a href="Charts.html" id="CurrentPage">
                     <i class='bx  bx-chart-bar-big-columns'></i>
-                    <span class="navbarname">View Graphs</span>
+                    <span class="navbarname">Dashboard</span>
                 </a>
             </li>
             
@@ -56,16 +56,42 @@
             </li>
         </ul>
     </div>
-    <div class="PageContents active">
-        <div class="PageHeader">Graphs</div>
+    <div class="PageContents active" id="ChartsContents">
+        <div class="PageHeader">Dashboard</div>
         <div class="PageBodyCharts">
             <div id="loaderwrapper" class="active">
             <span class="loader"><span class="loader-inner"></span></span>
             </div>
+            <div id="DashboardStats">
+                <div class="DashBoardItemWrapper">
+                    <div class="DashboardItemHeader">Average Days Overdue</div>
+                    <div class="DashboardItem" id="averagedaysoverdue"></div>
+                </div>
+                <div class="DashBoardItemWrapper">
+                    <div class="DashboardItemHeader">Average Days Borrowed</div>
+                    <div class="DashboardItem" id="averagedaysbetweendates"></div>
+                </div>
+                <div class="DashBoardItemWrapper">
+                    <div class="DashboardItemHeader">Total Books Borrowed</div>
+                    <div class="DashboardItem" id="totalbooksborrowed"></div>
+                </div>
+                <div class="DashBoardItemWrapper">
+                    <div class="DashboardItemHeader">Total Amount of Books Reserved</div>
+                    <div class="DashboardItem" id="totalbooksreserved"></div>
+                </div>
+            </div>
             <div class="GraphsContainer">
+                <div id="calenderchart">
+                    <div id="dashboard_div1">
+                        <div id="chart_div3"></div>
+                        <div id="filter_div3"></div>
+                    </div>
+                </div>
+                <div id=overduebarchart>
                 <div id="dashboard_div">
                     <div id="chart_div"></div>
                     <div id="filter_div"></div>
+                    </div>
                 </div>
                 <div id="userrolepiechartdashboard">
                     <div id="chart_div1"></div>
@@ -74,12 +100,6 @@
                 <div id="borrowuserrolecolumn">
                     <div id="chart_div2"></div>
                     <div id="filter_div2"></div>
-                </div>
-                <div id="calenderchart">
-                    <div id="dashboard_div1">
-                        <div id="chart_div3"></div>
-                        <div id="filter_div3"></div>
-                    </div>
                 </div>
             </div>
         </div>
