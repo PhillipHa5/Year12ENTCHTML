@@ -1,5 +1,5 @@
 new DataTable('#MainTable', {
-    ajax: 'https://script.google.com/macros/s/AKfycbxCRRzzMgHAP6tQdJSa96kL_FgKokQTHeVKmtCxptP8sj--WYreRvims85AQdt5Tgk0/exec',
+    ajax: 'https://script.google.com/macros/s/AKfycbwqIGgUgLFAlDYkGhZDOBgOkAYiJaMxs7khQogUZqLd0RWE2TyJgWGrc8Pvj0LK-WAV/exec',
     columns: [
         { data: 'user_id' },
         { data: 'book_id' },
