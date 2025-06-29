@@ -2,14 +2,18 @@
 .google-visualization-controls-rangefilter {
     display: flex;
     overflow: wrap;
+    font-size:2rem;
 }
 
+#dashboard_div1 .google-visualization-controls-rangefilter {
+    scale:125%;
+    transform-origin:bottom left;
+}
 .google-visualization-controls-label {
     float: left;
     clear: left;
     font-weight: normal;
 }
-
 .goog-combobox input {
     padding: 10px 14px;
     color: #3333;
@@ -127,7 +131,7 @@ span.goog-combobox.goog-inline-block {
     background-color: white;
     transform-origin: top left;
     width:760px;
-    height:784.31px;
+    height: 850px;
     padding-right:115px;
     transition: all 0.5s ease;
 }

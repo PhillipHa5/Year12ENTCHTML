@@ -24,11 +24,6 @@ const averagedayselement = document.getElementById('averagedaysoverdue');
 const averagedaysbetweendates = document.getElementById('averagedaysbetweendates');
 const totalbooksreserved = document.getElementById('totalbooksreserved');
 const totalbooksborrowed = document.getElementById('totalbooksborrowed')
-async function getData() {
-    const res = await fetch(url);
-    const data = await res.json();
-    return data;
-}
 function totalcountofarray(e) {
     let result = e.length;
     return result
@@ -123,12 +118,17 @@ function countoverdue(a) {
 function appendvalue(a, b) {
     a.textContent = b;
 }
-
+async function getData() {
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+}
 getData().then(rdata => {
     array = rdata.data;
     for (var j = 0; j < array.length; j++) {
         let rowdata = rdata.data[j];
         var result = Object.entries(rowdata);
+        console.log(result)
         for (var i = 0; i < result.length; i++) {
             newArray.push(result[i][1]);
         }
@@ -204,7 +204,7 @@ function drawoverduebooksChart() {
                 }
             });
             var columnChart = new google.visualization.ChartWrapper({
-                'chartType': 'ColumnChart',
+                'chartType': 'LineChart',
                 'containerId': 'chart_div',
                 'options': {
                     'width': 800,
@@ -275,7 +275,6 @@ function drawborrowuserrolecolumn() {
             ['History', calculatedistinctcount("history", "student", userrolegenre), calculatedistinctcount("history", "faculty", userrolegenre), calculatedistinctcount("history", "staff", userrolegenre), ''],
             ['Science', calculatedistinctcount("science", "student", userrolegenre), calculatedistinctcount("science", "faculty", userrolegenre), calculatedistinctcount("science", "staff", userrolegenre), '']
         ]);
-        var view = new google.visualization.DataView(data);
 
         var dashboard = new google.visualization.Dashboard(
             document.getElementById('userrolepiechartdashboard'));
