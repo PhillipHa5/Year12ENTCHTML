@@ -2,25 +2,30 @@ google.charts.load('current', { 'packages': ['corechart'] });
 google.charts.load("current", { packages: ["calendar"] });
 google.load('visualization', '1', { packages: ['controls'] });
 google.charts.setOnLoadCallback(main);
-const url = 'https://script.google.com/macros/s/AKfycbwqIGgUgLFAlDYkGhZDOBgOkAYiJaMxs7khQogUZqLd0RWE2TyJgWGrc8Pvj0LK-WAV/exec?nocache=' + new Date().getTime();
-let loader = document.getElementById("loaderwrapper")
+const url = 'https://script.google.com/macros/s/AKfycbwqIGgUgLFAlDYkGhZDOBgOkAYiJaMxs7khQogUZqLd0RWE2TyJgWGrc8Pvj0LK-WAV/exec'
+async function getData() {
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+}
 let newArray = [];
-let studentid = [];
-let bookid = [];
-let borrowdate = [];
-let returndate = [];
-let reservationstatus = [];
-let overduestatus = [];
-let userrole = [];
-let bookcategory = [];
-let differencebtdates = [];
-let agdbdo = [];
-let arrayoverduefalse = [];
-let arrayoverduetrue = [];
-let userrolegenre = [];
-let dateCounts = {};
-let dateCountArray = [];
-let dateCountArrayFiltered = [];
+    let studentid = [];
+    let bookid = [];
+    let borrowdate = [];
+    let returndate = [];
+    let reservationstatus = [];
+    let overduestatus = [];
+    let userrole = [];
+    let bookcategory = [];
+    let differencebtdates = [];
+    let agdbdo = [];
+    let arrayoverduefalse = [];
+    let arrayoverduetrue = [];
+    let userrolegenre = [];
+    let dateCounts = {};
+    let dateCountArray = [];
+    let dateCountArrayFiltered = [];
+let loader = document.getElementById("loaderwrapper")
 const averagedayselement = document.getElementById('averagedaysoverdue');
 const averagedaysbetweendates = document.getElementById('averagedaysbetweendates');
 const totalbooksreserved = document.getElementById('totalbooksreserved');
@@ -66,7 +71,6 @@ function calculatedistinctcount(genre, userrole, array) {
     }
     return countofdistinctcount
 }
-
 function sumofarray(a) {
     sum = a.reduce((partialSum, b) => partialSum + b, 0);
     return sum
@@ -119,17 +123,30 @@ function countoverdue(a) {
 function appendvalue(a, b) {
     a.textContent = b;
 }
-async function getData() {
-    const res = await fetch(url + '?nocache=' + new Date().getTime());
-    const data = await res.json();
-    return data;
-}
 function main() {
 getData().then(rdata => {
+    newArray = [];
+    studentid = [];
+    bookid = [];
+    borrowdate = [];
+    returndate = [];
+    reservationstatus = [];
+    overduestatus = [];
+    userrole = [];
+    bookcategory = [];
+    differencebtdates = [];
+    agdbdo = [];
+    arrayoverduefalse = [];
+    arrayoverduetrue = [];
+    userrolegenre = [];
+    dateCounts = {};
+    dateCountArray = [];
+    dateCountArrayFiltered = [];
     array = rdata.data;
     for (var j = 0; j < array.length; j++) {
         let rowdata = rdata.data[j];
         var result = Object.entries(rowdata);
+        console.log(result)
         for (var i = 0; i < result.length; i++) {
             newArray.push(result[i][1]);
         }
@@ -172,15 +189,16 @@ getData().then(rdata => {
     appendvalue(averagedaysbetweendates, Math.round(averageofarray(differencebtdates),0))
     appendvalue(totalbooksborrowed, totalcountofarray(borrowdate))
     appendvalue(totalbooksreserved, sumofarray(reservationstatus))
-    countdate();
+    countdate()
     joinarray(userrole, bookcategory, userrolegenre)
-    drawoverduebooksChart();
-    userrolepiechart();
-    drawborrowuserrolecolumn();
-    drawcalenderchart();
-    loader.classList.remove("active")
+    drawborrowuserrolecolumn()
+    drawcalenderchart()
+    userrolepiechart()
+    drawoverduebooksChart()
+    loader.classList.toggle("active") 
 });
 }
+
 function drawoverduebooksChart() {
             var data = new google.visualization.DataTable();
             data.addColumn('number', 'Days Borrowed');
@@ -258,7 +276,6 @@ function userrolepiechart() {
         });
         dashboard.bind(nameSelect, pieChart);
         dashboard.draw(data);
-    
 };
 
 function drawborrowuserrolecolumn() {
@@ -294,6 +311,7 @@ function drawborrowuserrolecolumn() {
         });
         dashboard.bind(nameSelect, pieChart);
         dashboard.draw(data);
+        var chart = new google.visualization.ColumnChart(document.getElementById("borrowuserrolecolumn"));
 };
 
 function drawcalenderchart() {
