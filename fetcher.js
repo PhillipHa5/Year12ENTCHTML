@@ -128,7 +128,6 @@ getData().then(rdata => {
     for (var j = 0; j < array.length; j++) {
         let rowdata = rdata.data[j];
         var result = Object.entries(rowdata);
-        console.log(result)
         for (var i = 0; i < result.length; i++) {
             newArray.push(result[i][1]);
         }
@@ -171,18 +170,19 @@ getData().then(rdata => {
     appendvalue(averagedaysbetweendates, Math.round(averageofarray(differencebtdates),0))
     appendvalue(totalbooksborrowed, totalcountofarray(borrowdate))
     appendvalue(totalbooksreserved, sumofarray(reservationstatus))
-    drawoverduebooksChart()
-    userrolepiechart()
+    countdate();
     joinarray(userrole, bookcategory, userrolegenre)
-    drawborrowuserrolecolumn()
-    countdate()
-    drawcalenderchart()
-    setTimeout(() => { loader.classList.toggle("active") }, 1000);
 });
-
+async function drawallcharts() {
+    await getData();
+    drawoverduebooksChart();
+    userrolepiechart();
+    drawborrowuserrolecolumn();
+    drawcalenderchart();
+    loader.classList.toggle("active")
+}
+drawallcharts();
 function drawoverduebooksChart() {
-    setTimeout(() => {
-            // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('number', 'Days Borrowed');
             data.addColumn('number', 'Number of Overdue Books');
@@ -225,12 +225,9 @@ function drawoverduebooksChart() {
             });
             dashboard.bind(donutRangeSlider, columnChart);
             dashboard.draw(data);
-        },
-        1000);
 };
 
 function userrolepiechart() {
-    setTimeout(() => {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'User Role');
         data.addColumn('number', 'Number Of People');
@@ -262,11 +259,10 @@ function userrolepiechart() {
         });
         dashboard.bind(nameSelect, pieChart);
         dashboard.draw(data);
-    }, 1000)
+    
 };
 
 function drawborrowuserrolecolumn() {
-    setTimeout(() => {
         var data = google.visualization.arrayToDataTable([
             ['User Role', 'Student', 'Faculty', 'Staff', { role: 'annotation' }],
             ['Art', calculatedistinctcount("art", "student", userrolegenre), calculatedistinctcount("art", "faculty", userrolegenre), calculatedistinctcount("art", "staff", userrolegenre), ''],
@@ -300,11 +296,9 @@ function drawborrowuserrolecolumn() {
         dashboard.bind(nameSelect, pieChart);
         dashboard.draw(data);
         var chart = new google.visualization.ColumnChart(document.getElementById("borrowuserrolecolumn"));
-    }, 1000)
 };
 
 function drawcalenderchart() {
-    setTimeout(() => {
         var dataTable = new google.visualization.DataTable();
         dataTable.addColumn('date', 'Date');
         dataTable.addColumn('number', 'Count');
@@ -337,5 +331,4 @@ function drawcalenderchart() {
         });
         dashboard.bind(donutRangeSlider, columnChart);
         dashboard.draw(dataTable);
-    }, 1000)
 };
