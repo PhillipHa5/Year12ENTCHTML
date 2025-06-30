@@ -1,7 +1,8 @@
 google.charts.load('current', { 'packages': ['corechart'] });
 google.charts.load("current", { packages: ["calendar"] });
 google.load('visualization', '1', { packages: ['controls'] });
-const url = 'https://script.google.com/macros/s/AKfycbwqIGgUgLFAlDYkGhZDOBgOkAYiJaMxs7khQogUZqLd0RWE2TyJgWGrc8Pvj0LK-WAV/exec'
+google.charts.setOnLoadCallback(main);
+const url = 'https://script.google.com/macros/s/AKfycbwqIGgUgLFAlDYkGhZDOBgOkAYiJaMxs7khQogUZqLd0RWE2TyJgWGrc8Pvj0LK-WAV/exec?nocache=' + new Date().getTime();
 let loader = document.getElementById("loaderwrapper")
 let newArray = [];
 let studentid = [];
@@ -119,10 +120,11 @@ function appendvalue(a, b) {
     a.textContent = b;
 }
 async function getData() {
-    const res = await fetch(url);
+    const res = await fetch(url + '?nocache=' + new Date().getTime());
     const data = await res.json();
     return data;
 }
+function main() {
 getData().then(rdata => {
     array = rdata.data;
     for (var j = 0; j < array.length; j++) {
@@ -172,16 +174,13 @@ getData().then(rdata => {
     appendvalue(totalbooksreserved, sumofarray(reservationstatus))
     countdate();
     joinarray(userrole, bookcategory, userrolegenre)
-});
-async function drawallcharts() {
-    await getData();
     drawoverduebooksChart();
     userrolepiechart();
     drawborrowuserrolecolumn();
     drawcalenderchart();
-    loader.classList.toggle("active")
+    loader.classList.remove("active")
+});
 }
-drawallcharts();
 function drawoverduebooksChart() {
             var data = new google.visualization.DataTable();
             data.addColumn('number', 'Days Borrowed');
@@ -295,7 +294,6 @@ function drawborrowuserrolecolumn() {
         });
         dashboard.bind(nameSelect, pieChart);
         dashboard.draw(data);
-        var chart = new google.visualization.ColumnChart(document.getElementById("borrowuserrolecolumn"));
 };
 
 function drawcalenderchart() {
